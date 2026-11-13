@@ -331,6 +331,12 @@ def build() -> None:
             gname = book.get("group", "其他")
             by_group.setdefault(gname, {"group": gname, "books": []})["books"].append(book)
         groups = list(by_group.values())
+    # 合并同名分组 + 固定展示顺序
+    merged: dict[str, dict] = {}
+    for g in groups:
+        merged.setdefault(g["group"], {"group": g["group"], "books": []})["books"].extend(g["books"])
+    order = ["产品与用户", "商业、增长与思维", "商业与金融", "个人成长", "沟通表达", "长期主义与人物", "长期主义"]
+    groups = [merged[k] for k in order if k in merged] + [g for k, g in merged.items() if k not in order]
 
     # 长文按日期倒序
     longreads.sort(key=lambda x: (x.get("date", ""), x["slug"]), reverse=True)
