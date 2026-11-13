@@ -49,6 +49,7 @@ NAV = [
     ("thinking", "/thinking.html", "思考"),
     ("reading", "/reading.html", "读书"),
     ("research", "/research.html", "研究"),
+    ("map", "/map.html", "地图"),
     ("repos", "/#repos", "开源"),
 ]
 
@@ -59,6 +60,7 @@ STATIC_PAGES = [
     dict(out="cases/platform.html", nav="cases", title="B 端产品与中台案例", desc="B 端产品与中台的产品化：权限与字段方案、动态配置 / 流控 / 消息队列中台的 Web 化改造。"),
     dict(out="cases/opc.html", nav="cases", title="AI 产品 0→1 实验案例", desc="三款 AI C 端产品的 MVP 实验：用最低成本验证，再决定是否继续。"),
     dict(out="cases/robot-duck.html", nav="cases", title="机器鸭复刻实验", desc="机器鸭：零基础复刻一台 25cm 双足机器人——先在 MuJoCo 仿真里跑通 7 个官方策略与 600+ 次压力测试，再决定是否进入真机阶段。"),
+    dict(out="map.html", nav="map", title="主题地图", desc="把书、文章、研究、项目串成五条线：用户与需求、发现与验证、增长与商业、判断与决策、学习与长期主义。"),
 ]
 
 
@@ -511,7 +513,8 @@ def build() -> None:
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
 
     print(f"\n构建完成 → {PUB}")
-    print(f"页面数：首页+3 列表+{len(STATIC_PAGES)} 案例+{len(essays)} 思考+{len(longreads)} 研究长文+{len(reading_notes)} 读书深读")
+    case_count = sum(1 for p in STATIC_PAGES if p["out"].startswith("cases/"))
+    print(f"页面数：首页+3 列表+{case_count} 案例+1 主题地图+{len(essays)} 思考+{len(longreads)} 研究长文+{len(reading_notes)} 读书深读")
 
 
 def serve(port: int = 8777) -> None:

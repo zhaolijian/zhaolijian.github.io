@@ -15,7 +15,8 @@ site/
 │     ├─ thinking.html      思考列表外壳
 │     ├─ reading.html       读书列表外壳
 │     ├─ research.html      研究列表外壳
-│     └─ cases/*.html       五个作品案例页（含一个实验项目）
+│     ├─ cases/*.html       五个作品案例页（含一个实验项目）
+│     └─ map.html           主题地图（人工策展的跨内容索引）
 ├─ content/                 ← 日常更新只改这里
 │  ├─ thinking/*.md         思考文章
 │  ├─ research/*.md         研究长文（kind: longread）与研究卡片（kind: card）
