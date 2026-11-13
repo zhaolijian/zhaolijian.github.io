@@ -15,12 +15,13 @@ site/
 │     ├─ thinking.html      思考列表外壳
 │     ├─ reading.html       读书列表外壳
 │     ├─ research.html      研究列表外壳
-│     └─ cases/*.html       四个作品案例页
+│     └─ cases/*.html       五个作品案例页（含一个实验项目）
 ├─ content/                 ← 日常更新只改这里
 │  ├─ thinking/*.md         思考文章
 │  ├─ research/*.md         研究长文（kind: longread）与研究卡片（kind: card）
 │  ├─ research/cards.json   旧版研究卡片数据
-│  └─ reading/books.json    读书条目；books-new.json 会合并进列表
+│  ├─ reading/books.json    读书条目；books-new.json 会合并进列表
+│  └─ reading/notes/*.md    读书深读笔记（可选，独立成页）
 ├─ assets/                  样式、脚本、图片
 └─ .github/workflows/pages.yml  GitHub Actions：push 后自动构建并发布 Pages
 ```
@@ -51,6 +52,7 @@ links:
 **研究长文**：放到 `content/research/`，front matter 用 `kind: longread` + `topic`，会自动生成带目录的长文页并列入研究页。
 **研究卡片**：`kind: card`，另填 `data`（数据口径）与 `judgment`（判断），可选 `related: 长文文件名` 链接到长文。
 **读书**：编辑 `content/reading/books.json`（结构见文件内示例，按分组组织）。
+**深读笔记**：在 `content/reading/notes/` 新建 md，front matter 至少写 `title`、`book`、`author`、`summary`，正文用 `##` 分节；然后在 `books.json` 对应书条目里加 `"note": "<文件名>"`，列表卡片会自动出现「深读笔记」入口。
 
 ## 本地预览 / 手动构建
 
@@ -77,3 +79,4 @@ PYTHONPATH=tools/pylibs python3 build.py --serve
 - 不写个人身份信息（姓名、学校、公司、联系方式、简历）。
 - 第三方数据只做结论级转述，标注「机构 + 时间 + 口径」；核不到写「待核对」。
 - 不搬运第三方报告原文与图表；引用书只做观点转述。
+- 判断直接写结论与适用条件，避免「我的判断」「我认为」；「我」只用在真实经历处。

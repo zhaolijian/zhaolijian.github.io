@@ -223,6 +223,59 @@ def research_page(item: dict) -> tuple[str, str]:
     return f"research/{slug}.html", content
 
 
+def deep_note_page(item: dict) -> tuple[str, str]:
+    """读书深读笔记页：长文布局 + 目录。"""
+    slug = item["slug"]
+    title = item.get("title", slug)
+    book = item.get("book", "")
+    author = item.get("author", "")
+    date = item.get("date", "")
+    fmt = item.get("format", "markdown")
+    body = item["_body"]
+    body_html = body if fmt == "html" else md_to_html(body)
+    words = word_count(body_html)
+    links_html = render_links(item.get("links", []), "相关")
+    toc = re.findall(r"<h2[^>]*>(.*?)</h2>", body_html, re.S)
+    toc_html = "".join(f'<li><a href="#sec-{i}">{text_of_html(t)}</a></li>' for i, t in enumerate(toc, 1))
+    counter = {"n": 0}
+
+    def add_id(m):
+        counter["n"] += 1
+        return f'<h2 id="sec-{counter["n"]}">{m.group(1)}</h2>'
+
+    body_html = re.sub(r"<h2[^>]*>(.*?)</h2>", add_id, body_html, flags=re.S)
+    toc_block = f'<aside class="longread-toc"><p class="eyebrow">目录</p><ol>{toc_html}</ol></aside>' if toc else ""
+    meta = " · ".join(x for x in [book, author] if x)
+    content = f"""<div class="article longread reading-note">
+  <div class="wrap longread-wrap{" has-toc" if toc else ""}">
+    {toc_block}
+    <div class="prose">
+      <p class="eyebrow">读书笔记 · 深读</p>
+      <h1 class="note-h1">{htmllib.escape(title)}</h1>
+      <p class="article-meta">{htmllib.escape(meta)} · {htmllib.escape(date)} · 约 {words} 字 · <a href="/reading.html">← 返回读书笔记</a></p>
+{body_html}
+{links_html}
+    </div>
+  </div>
+</div>"""
+    return f"reading/{slug}.html", content
+
+
+def deep_card_html(item: dict) -> str:
+    slug = item["slug"]
+    title = item.get("title", "")
+    book = item.get("book", "")
+    author = item.get("author", "")
+    summary = item.get("summary", "")
+    return f"""<div class="book deep-card">
+  <span class="cat">深读笔记</span>
+  <h3><a href="/reading/{escape_attr(slug)}.html">{htmllib.escape(title)}</a></h3>
+  <p class="muted">{htmllib.escape(book)} · {htmllib.escape(author)}</p>
+  <p>{htmllib.escape(summary)}</p>
+  <a class="more" href="/reading/{escape_attr(slug)}.html">读深读笔记 →</a>
+</div>"""
+
+
 def card_html(card: dict) -> str:
     topic = escape_attr(card.get("topic", ""))
     title = escape_attr(card.get("title", ""))
@@ -264,12 +317,15 @@ def essay_html(item: dict) -> str:
 
 
 def book_html(book: dict) -> str:
+    note = book.get("note", "")
+    note_link = f'<a class="more" href="/reading/{escape_attr(note)}.html">深读笔记 →</a>' if note else ""
     return f"""<div class="book">
   <span class="cat">{escape_attr(book.get("cat", ""))}</span>
   <h3>{escape_attr(book.get("title", ""))}</h3>
   <p class="muted">{escape_attr(book.get("author", ""))}</p>
   <p>{book.get("body", "")}</p>
   <div class="takeaway">{book.get("takeaway", "")}</div>
+  {note_link}
 </div>"""
 
 
@@ -323,7 +379,9 @@ def build() -> None:
     if cards_json.exists():
         cards = json.loads(cards_json.read_text(encoding="utf-8")) + cards
     books_data = CONTENT / "reading" / "books.json"
-    groups = json.loads(books_data.read_text(encoding="utf-8"))["groups"] if books_data.exists() else []
+    books_meta = json.loads(books_data.read_text(encoding="utf-8")) if books_data.exists() else {}
+    groups = books_meta.get("groups", [])
+    group_intros = books_meta.get("group_intros", {})
     books_new = CONTENT / "reading" / "books-new.json"
     if books_new.exists():
         extra = json.loads(books_new.read_text(encoding="utf-8"))
@@ -342,6 +400,12 @@ def build() -> None:
 
     # 长文按日期倒序
     longreads.sort(key=lambda x: (x.get("date", ""), x["slug"]), reverse=True)
+    # 读书深读笔记（固定顺序：产品 → 思维/学习 → 成长 → 投资）
+    reading_notes = load_collection(CONTENT / "reading" / "notes")
+    note_order = ["inspired", "yujun-product-method", "six-hats", "feynman-technique",
+                  "cognitive-awakening", "flowering-life", "simplest-investing", "duan-yongping-quotes"]
+    reading_notes.sort(key=lambda x: note_order.index(x["slug"]) if x["slug"] in note_order else 99)
+
 
     # ---- 文章页 ----
     for item in essays:
@@ -352,6 +416,11 @@ def build() -> None:
     for item in longreads:
         out, body = research_page(item)
         write_page(out, "research", f'{item.get("title", "")}｜{SITE_NAME}', item.get("summary", ""), body)
+
+    # ---- 读书深读笔记页 ----
+    for item in reading_notes:
+        out, body = deep_note_page(item)
+        write_page(out, "reading", f'{item.get("title", "")}｜{SITE_NAME}', item.get("summary", ""), body)
 
     # ---- 静态案例页 ----
     for page in STATIC_PAGES:
@@ -389,20 +458,28 @@ def build() -> None:
     reading_shell = (PAGES_DIR / "reading.html").read_text(encoding="utf-8")
     groups_html = []
     for group in groups:
+        intro = group_intros.get(group["group"], "")
+        intro_html = f'\n<p class="group-intro">{htmllib.escape(intro)}</p>' if intro else ""
         groups_html.append(
-            f'<div class="book-group">\n<h2>{escape_attr(group["group"])}</h2>\n<div class="book-grid">\n'
+            f'<div class="book-group">\n<h2>{escape_attr(group["group"])}</h2>{intro_html}\n<div class="book-grid">\n'
             + "\n".join(book_html(b) for b in group["books"])
             + "\n</div>\n</div>"
         )
+    deep_html = "\n      ".join(deep_card_html(n) for n in reading_notes)
+    book_count = sum(len(g["books"]) for g in groups)
     write_page("reading.html", "reading", f"读书笔记｜{SITE_NAME}",
-               "不摘抄，只记录能改变判断的内容：产品、商业、思维与长期主义的书单。",
-               fill(reading_shell, {"BOOK_GROUPS": "\n\n    ".join(groups_html)}))
+               f"{book_count} 本书：{len(reading_notes)} 篇深读笔记与全书目卡片，记录书的结构、能改变判断的结论与适用边界。",
+               fill(reading_shell, {
+                   "DEEP_NOTES": deep_html,
+                   "BOOK_GROUPS": "\n\n    ".join(groups_html),
+               }))
 
     # ---- 首页 ----
     index_shell = (PAGES_DIR / "index.html").read_text(encoding="utf-8")
     thinking_preview = "\n      ".join(essay_html(e) for e in essays[:5])
     research_preview = "\n      ".join(card_html(dict(c, related=card_related.get(c.get("title", ""), ""))) for c in cards[:4])
-    selected_books = [b for g in groups for b in g["books"]][:4]
+    deep_books = [b for g in groups for b in g["books"] if b.get("note")]
+    selected_books = (deep_books[:3] or [b for g in groups for b in g["books"]][:3])
     books_preview = "\n      ".join(book_html(b) for b in selected_books)
     write_page("index.html", "home",
                f"{SITE_NAME}｜作品、思考、读书与研究",
@@ -423,6 +500,7 @@ def build() -> None:
     urls = ["", "thinking.html", "reading.html", "research.html"] + [p["out"] for p in STATIC_PAGES]
     urls += [out for item in essays for out, _ in [article_page(item)]]
     urls += [out for item in longreads for out, _ in [research_page(item)]]
+    urls += [out for item in reading_notes for out, _ in [deep_note_page(item)]]
     lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for out in urls:
         loc = f"{SITE_URL}/" if out == "" else f"{SITE_URL}/{out}"
@@ -433,7 +511,7 @@ def build() -> None:
     (PUB / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n", encoding="utf-8")
 
     print(f"\n构建完成 → {PUB}")
-    print(f"页面数：首页+3 列表+{len(STATIC_PAGES)} 案例+{len(essays)} 思考+{len(longreads)} 研究长文")
+    print(f"页面数：首页+3 列表+{len(STATIC_PAGES)} 案例+{len(essays)} 思考+{len(longreads)} 研究长文+{len(reading_notes)} 读书深读")
 
 
 def serve(port: int = 8777) -> None:
