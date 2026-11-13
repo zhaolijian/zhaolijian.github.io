@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>把 Agent 当受控工作流来设计｜作品集</title>
+<meta name="description" content="为什么我给生成链路上墙钟、调用预算、状态机与人工在环，而不是追求“全自主”。">
+<link rel="canonical" href="https://zhaolijian.github.io/thinking/agent-workflow-boundaries.html">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="AI 产品经理作品集">
+<meta property="og:title" content="把 Agent 当受控工作流来设计｜作品集">
+<meta property="og:description" content="为什么我给生成链路上墙钟、调用预算、状态机与人工在环，而不是追求“全自主”。">
+<meta property="og:url" content="https://zhaolijian.github.io/thinking/agent-workflow-boundaries.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI 产品经理作品集",
+  "description": "AI 产品案例、产品思考与读书笔记：GEO 诊断与内容 Agent、阅记、B 端中台与 0→1 验证。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"],
+  "about": ["AI 应用产品", "Agent 工作流", "GEO（生成式引擎优化）", "B 端产品", "大模型应用落地"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 产品经理 <small>作品集</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/#cases">作品</a>
+      <a href="/thinking.html" aria-current="page">思考</a>
+      <a href="/reading.html">读书</a>
+      <a href="/research.html">研究</a>
+      <a href="/#repos">开源</a>
+      <a class="nav-cta" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="article">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">产品思考 · Agent</p>
+      <h1>把 Agent 当受控工作流来设计</h1>
+      <p class="article-meta">2026-10 · 约 1700 字</p>
+
+      <p>今年「Agent」成了 AI 产品里最容易被滥用的词：接一个大模型、加几个工具调用、写一句「自主规划」，就敢叫 Agent。但真正做过 ToB 或内容生产场景的人会知道，<strong>「自主」恰恰是这类场景最不敢要的东西</strong>。</p>
+      <p>我在做 GEO 内容生产链路时的选择是：把它设计成受控工作流，而不是一个追求全自主的 Agent。这篇文章讲清楚为什么。</p>
+
+      <h2>全自主 Agent 在真实场景里的三个坑</h2>
+      <ol>
+        <li><strong>不可预测</strong>：同一段输入，两次运行可能走完全不同的路径。对内容生产来说，这意味着质量不稳定、无法复现，用户不敢把结果直接交给客户。</li>
+        <li><strong>成本不可控</strong>：模型调用次数、工具调用深度、重试次数都可能在某次任务里突然放大。ToB 产品必须能提前算清一次任务的成本上限。</li>
+        <li><strong>无法验收</strong>：如果 Agent 自己决定「什么时候算完成」，产品就失去了验收标准。用户付了钱，却不知道交付物应该长什么样。</li>
+      </ol>
+      <p>这三个问题在 Demo 阶段都可以被「效果很惊艳」掩盖，但一到真实用户、真实成本、真实交付，就会全部暴露。</p>
+
+      <h2>我的做法：状态机 + 预算 + 门禁 + 人工在环</h2>
+      <p>把「写一篇可被 AI 摘录的文章」拆成两条流水线：预检与生成。每条流水线都做四件事：</p>
+      <ul>
+        <li><strong>状态机管理</strong>：任务从创建、执行、失败、重试到完成都有明确状态，可取消、可改稿、可重跑；</li>
+        <li><strong>每步预算</strong>：预检任务有墙钟上限与模型调用预算，生成任务有共享的调用上限；配图、质量复查也有各自的次数限制；</li>
+        <li><strong>质量门禁</strong>：预检有硬门禁（不通过就不进入生成），生成后有质量复查（不合格打回修补），同步前还有 readiness 检查；</li>
+        <li><strong>人工在环</strong>：用户可以在任意阶段打断、修改、重跑；所有中间结果留痕，任务可复现、成本可核算。</li>
+      </ul>
+
+      <blockquote>
+        <p>我不追求「让 AI 更自由」，而是让每一步可观测、可干预、可回滚。对产品来说，可控性本身就是价值。</p>
+      </blockquote>
+
+      <h2>什么场景适合全自主？</h2>
+      <p>受控工作流不是唯一答案。判断要不要放开自主性，我通常看三条：</p>
+      <ul>
+        <li><strong>容错空间</strong>：错了会怎样？代码补全错了可以撤销，内容发错了可能损失客户信任；</li>
+        <li><strong>结果可验证性</strong>：能不能用客观标准判断「做对了」？能，才敢让 Agent 自己迭代；</li>
+        <li><strong>成本敏感度</strong>：一次任务的成本是否必须可预期？ToB 交付基本是「必须」。</li>
+      </ul>
+      <p>三条都宽松时，可以放开自主；任何一条严格时，就应该把工作流设计成「可解释的步骤 + 可兜底的失败」。</p>
+
+      <h2>产品经理在这件事里的职责</h2>
+      <p>Agent 产品的产品经理，工作重点不是「调 Prompt」，而是把不确定性变成产品行为：</p>
+      <ul>
+        <li>定义「什么算完成」——验收标准先于实现；</li>
+        <li>设计「失败了怎么办」——重试、降级、让用户接管，而不是直接报错；</li>
+        <li>让过程可见——用户要知道现在走到哪一步、大概还要多久、花了多少成本；</li>
+        <li>把能力边界写清楚——哪些是产品保证的，哪些是概率事件，必须分开讲。</li>
+      </ul>
+      <p>我越来越觉得，AI 产品经理的核心竞争力不是「懂模型」，而是<strong>懂怎么把模型的不确定性装进一个可交付的产品里</strong>。这件事，工程背景帮了我很多，但判断标准仍然是产品标准：用户能不能用、敢不敢用、值不值得用。</p>
+
+      <div class="article-note">
+        延伸阅读：<a href="/cases/geo.html">源引 GEO 案例</a> · <a href="/thinking/geo-ai-search.html">AI 搜索时代，品牌的可摘录性比曝光更重要</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">AI 产品经理 · 作品集</div>
+        <p>从服务端研发到 AI 产品，关注大模型能力如何变成可验证、可交付的产品闭环。<br>开放 AI 应用 / Agent 产品方向机会。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品案例</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/reading.html">读书笔记</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+          <li><a href="/#repos">开源仓库</a></li>
+          <li><a href="/#about">关于我</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 AI 产品经理作品集 · 本站内容为个人作品与思考，欢迎交流，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

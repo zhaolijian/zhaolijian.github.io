@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>B 端产品化不是把功能做全，而是把边界说清｜作品集</title>
+<meta name="description" content="从三大中台与权限方案里总结：B 端需求怎么拆、怎么定优先级、怎么让多端一致。">
+<link rel="canonical" href="https://zhaolijian.github.io/thinking/b2b-productization.html">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="AI 产品经理作品集">
+<meta property="og:title" content="B 端产品化不是把功能做全，而是把边界说清｜作品集">
+<meta property="og:description" content="从三大中台与权限方案里总结：B 端需求怎么拆、怎么定优先级、怎么让多端一致。">
+<meta property="og:url" content="https://zhaolijian.github.io/thinking/b2b-productization.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI 产品经理作品集",
+  "description": "AI 产品案例、产品思考与读书笔记：GEO 诊断与内容 Agent、阅记、B 端中台与 0→1 验证。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"],
+  "about": ["AI 应用产品", "Agent 工作流", "GEO（生成式引擎优化）", "B 端产品", "大模型应用落地"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 产品经理 <small>作品集</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/#cases">作品</a>
+      <a href="/thinking.html" aria-current="page">思考</a>
+      <a href="/reading.html">读书</a>
+      <a href="/research.html">研究</a>
+      <a href="/#repos">开源</a>
+      <a class="nav-cta" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="article">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">产品思考 · B 端</p>
+      <h1>B 端产品化不是把功能做全，而是把边界说清</h1>
+      <p class="article-meta">2026-07 · 约 1700 字</p>
+
+      <p>我在在线教育公司做过两年业务中台（动态配置、流控、消息队列），在一线互联网公司企业协作产品做过 B 端核心功能的服务端研发。这两段经历里，我见过最多的返工，不是「功能没做对」，而是「边界没说清」。</p>
+
+      <h2>B 端需求的真实形态：没有「全都要」</h2>
+      <p>C 端产品可以靠一个爽点赢；B 端产品往往要在多个业务线、多个角色、多个端之间做平衡。一个看起来简单的需求，背后至少牵动四件事：</p>
+      <ul>
+        <li><strong>影响哪些端</strong>：Web、移动端、OpenAPI、第三方集成，各端的权限与数据口径是否一致；</li>
+        <li><strong>存量怎么兼容</strong>：已有客户的数据、配置、流程不能因为新功能而坏掉；</li>
+        <li><strong>怎么回滚</strong>：上线后出问题，能不能快速恢复，而不是只能发版修复；</li>
+        <li><strong>怎么验收</strong>：业务方怎么确认「做完了」，产品怎么确认「做对了」。</li>
+      </ul>
+      <p>这四件事如果不在 PRD 前几行写清楚，后面一定会以「需求变更」的形式回来找你。</p>
+
+      <h2>案例：把「权限」做成字段级隔离</h2>
+      <p>企业客户在组织架构调整时，最敏感的是「谁能看到谁的薪酬与人事信息」。原来的权限模型无法表达「部门负责人」和「HRBP」在同一份数据上的不同可见范围，导致客户调整组织时要么权限过大、要么流程走不通。</p>
+      <p>这个需求的产品难点不在「加一个角色」，而在：</p>
+      <ul>
+        <li>权限要落到<strong>字段级</strong>，而不是菜单级——否则同一张表里，HRBP 能看到不该看的字段；</li>
+        <li>规则要<strong>多端一致</strong>——Web 端、多维表格、OpenAPI 不能出现三种表现；</li>
+        <li>上线要<strong>可回滚</strong>——权限问题一旦出错就是事故。</li>
+      </ul>
+      <p>最终方案一次上线、零回滚。复盘时我最大的感受是：<strong>B 端产品经理的价值，很大程度上体现在「提前把坑画出来」。</strong></p>
+
+      <h2>案例：把「行业差异」抽象成字段类型</h2>
+      <p>不同行业对薪酬档案的字段需求差异巨大：金融客户要复杂公式与等级，制造客户要班次与计件，互联网客户要期权与调薪记录。如果每个客户都定制开发，产品会被拖垮。</p>
+      <p>解法不是「做一个万能表单」，而是抽象出文本、数字、日期、公式等标准字段类型，并定义校验、默认值、可见性与引用规则，让客户通过配置表达差异。这背后是一条 B 端产品的基本原则：<strong>用配置覆盖差异，用规范控制复杂度。</strong></p>
+
+      <h2>中台的产品价值 = 业务方能自助</h2>
+      <p>做中台最容易犯的错误，是把「能力强大」当成产品价值。SDK 能力再强，如果业务方不会接入、不敢配置、出问题只能找你，那它就只是一个技术组件，而不是产品。</p>
+      <p>我在负责三大中台时，把每个组件都当作 B 端产品来做：</p>
+      <ul>
+        <li>动态配置：从「误删配置导致线上故障」出发，做历史保存、回溯、自助查询与配置—服务关系可视化；</li>
+        <li>流控：从「规则变更要改代码、平均 45 分钟」出发，做可视化配置与动态下发，把生效时间降到 2 分钟；</li>
+        <li>消息队列：从「测试环境串通、超长延迟不支持」出发，做环境隔离、蓝绿灰度与 40 天以上超长延迟。</li>
+      </ul>
+      <p>衡量这些改造是否成功的标准，不是「功能多不多」，而是<strong>业务方能不能自己完成接入、配置和排查</strong>。</p>
+
+      <h2>技术背景是双刃剑</h2>
+      <p>懂技术让我能快速判断可行性、提前发现实现风险，也让我在写 PRD 时能写到研发愿意看的粒度。但它也带来一个风险：容易过早陷入实现细节，把「怎么做」当成「做什么」。</p>
+      <p>我现在会刻意先问三个问题，再进入技术讨论：</p>
+      <ol>
+        <li>用户（业务方）现在是怎么解决这个问题的？</li>
+        <li>如果不做这个功能，会有什么后果？</li>
+        <li>怎么判断这件事做成了？</li>
+      </ol>
+
+      <h2>给 B 端产品经理的三条建议</h2>
+      <ul>
+        <li><strong>先写边界，再写功能</strong>：不做什么、影响哪些端、怎么回滚，比功能列表更重要；</li>
+        <li><strong>把「自助」当验收标准</strong>：业务方能自己用起来，才算产品化完成；</li>
+        <li><strong>兼容性就是体验</strong>：B 端用户对「改坏了」的容忍度极低，灰度、回滚、存量兼容是产品设计的一部分。</li>
+      </ul>
+
+      <div class="article-note">
+        延伸阅读：<a href="/cases/platform.html">B 端产品与中台案例</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">AI 产品经理 · 作品集</div>
+        <p>从服务端研发到 AI 产品，关注大模型能力如何变成可验证、可交付的产品闭环。<br>开放 AI 应用 / Agent 产品方向机会。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品案例</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/reading.html">读书笔记</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+          <li><a href="/#repos">开源仓库</a></li>
+          <li><a href="/#about">关于我</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 AI 产品经理作品集 · 本站内容为个人作品与思考，欢迎交流，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

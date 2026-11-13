@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>源引 GEO｜作品集案例</title>
+<meta name="description" content="源引 GEO：面向中小企业的生成式引擎优化（GEO）产品。从品牌诊断、AI 内容工厂到真人探针实测回测，用 Agent 流水线把 AI 搜索可见性做成可验证的闭环。">
+<link rel="canonical" href="https://zhaolijian.github.io/cases/geo.html">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="AI 产品经理作品集">
+<meta property="og:title" content="源引 GEO｜作品集案例">
+<meta property="og:description" content="源引 GEO：面向中小企业的生成式引擎优化（GEO）产品。从品牌诊断、AI 内容工厂到真人探针实测回测，用 Agent 流水线把 AI 搜索可见性做成可验证的闭环。">
+<meta property="og:url" content="https://zhaolijian.github.io/cases/geo.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI 产品经理作品集",
+  "description": "AI 产品案例、产品思考与读书笔记：GEO 诊断与内容 Agent、阅记、B 端中台与 0→1 验证。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"],
+  "about": ["AI 应用产品", "Agent 工作流", "GEO（生成式引擎优化）", "B 端产品", "大模型应用落地"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 产品经理 <small>作品集</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/#cases" aria-current="page">作品</a>
+      <a href="/thinking.html">思考</a>
+      <a href="/reading.html">读书</a>
+      <a href="/research.html">研究</a>
+      <a href="/#repos">开源</a>
+      <a class="nav-cta" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="case-hero">
+  <div class="wrap">
+    <div class="kicker">
+      <span>案例 01 · 旗舰产品</span>
+      <span>2026.07 – 2026.10</span>
+      <span>产品 &amp; 全栈</span>
+      <span>源引 GEO</span>
+    </div>
+    <h1>源引 GEO：让品牌出现在 AI 答案里</h1>
+    <p class="lede">面向中小企业的生成式引擎优化（GEO）产品。先诊断品牌为什么没被 AI 提到，再用受控的 Agent 流水线生产「可被摘录」的内容，最后用真人探针在多个 AI 平台上回测可见性——把 GEO 从玄学变成一条可验证的闭环。</p>
+    <dl class="case-meta">
+      <div><dt>我的角色</dt><dd>产品负责人 + 全栈实现（独立完成）</dd></div>
+      <div><dt>时间</dt><dd>2026.07 – 2026.10</dd></div>
+      <div><dt>状态</dt><dd>已上线免费内测，2026.10 阶段性中止</dd></div>
+      <div><dt>技术栈</dt><dd>Next.js 14 · Prisma · Supabase · DeepSeek · 浏览器扩展</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="wrap">
+    <div class="prose">
+
+      <h2>问题：买家开始问 AI，品牌却不在答案里</h2>
+      <p>用户获取信息的入口正在从「搜索框」变成「AI 问答」。当客户问豆包、DeepSeek、通义千问「XX 场景下有什么品牌推荐」时，AI 给出的是一个被生成、被摘录、被引用的答案——品牌的可见性不再只取决于排名，而取决于<strong>它有没有可被 AI 摘录和引用的结构化内容供给</strong>。</p>
+      <p>这件事对中小企业的难点是具体的：他们知道要「做 AI 优化」，但不知道从哪下手；市面上有 GEO/SEO 工具，但多数要么只交付曝光、要么只用一套「AI 写稿」把内容做多。真正缺的是一个能回答「我为什么没被提到、该改什么、改完有没有用」的闭环。</p>
+
+      <div class="callout">
+        <span class="label">第一性原理</span>
+        <p>GEO 不是「写更多文章」，而是<strong>提高品牌信息被生成式引擎采信、关联与引用的概率</strong>。所以产品必须同时解决三件事：诊断供给侧缺口、生产符合摘录结构的内容、用真实提问验证效果。</p>
+      </div>
+
+      <h2>行业判断：谁最需要 GEO</h2>
+      <p>立项前我先问了一个比「怎么做」更靠前的问题：谁会为「被 AI 引用」这件事付钱。判断标准很朴素——客户在购买前必须经历「研究 → 比较 → 寻求方案 → 建立信任」的过程，而这几步正在被 AI 问答接管，那他就有真实需求。按这个标准，能落进 GEO 黄金赛道的只有四类客户：</p>
+      <p>时机上我只看两件事：入口有没有迁移，供给有没有成型。前者正在发生——人开始问 AI，而不是翻搜索结果页；后者还没有——大厂和头部服务商盯着大客户与出海生态，本地中小客户基本没人认真覆盖。需求真实、方法论没固化、评估标准还没人立起来，这就是窗口。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>客户类型</th><th>核心特征（典型行业）</th><th>为什么需要 GEO</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>高客单价 / 高风险决策</td><td>决策成本高、信息不对称，极度依赖专业与权威（医疗健康、法律服务、金融保险）</td><td>被 AI 引用近似于被专家背书，缩短买家「敢不敢选你」那段信任建立期。</td></tr>
+            <tr><td>B2B 复杂方案</td><td>决策链长：使用者、评估者、决策者往往不是同一批人（SaaS、咨询、工业设备）</td><td>把自己的优势写成 AI 回答专业问题时的「标准答案」，在竞品还没反应过来时先影响关键人。</td></tr>
+            <tr><td>强本地化信任服务</td><td>消费半径小，生意靠「附近 + 口碑」（装修、维修、宠物医疗、餐饮）</td><td>「附近哪家靠谱」这类问题的第一个答案，本身就是获客入口。</td></tr>
+            <tr><td>个人品牌 / 专家服务</td><td>价值几乎全部来自个人经验与观点（顾问、教练、知识博主）</td><td>零散观点被 AI 体系化引用之后，才有机会从「有粉丝」变成「被当作权威」。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>把需求强度拉成一条线，我的结论是：<strong>消费品 &lt; 本地服务 &lt; 个人品牌 &lt; 企业服务 &lt; 高客单价服务</strong>。逻辑不复杂：决策越贵、越难验证，买家越依赖「别人怎么评价」和「专业背书」，而这恰好是生成式答案最容易替代的一环；反过来，低客单价的冲动消费几乎不需要 AI 帮忙做功课。</p>
+
+      <div class="callout">
+        <span class="label">排序不等于我该做的市场</span>
+        <p>需求强度最高的高客单价服务，同时也是决策链最长、销售周期最重、行业门槛最高的一类。我一个人、验证期只有几个月，打不进去。所以我把 ICP 收窄到「区域本地服务里，强信任、强地域、老板亲自决策的中小企业」——需求强度只排倒数第二，但决策链短、反馈快、老板本人就是用户，适合用来验证方法论，不适合用来讲规模故事。</p>
+      </div>
+
+      <p>这张表也是 ICP 的来源：先按「决策是否依赖信任」筛出四类，再按「我一个人能不能服务得动」做减法，剩下的那一格就是早期产品的市场边界。先想清楚不服务谁，后面的功能取舍才有依据。</p>
+
+      <h2>竞品与差异化：工具卷在「生成与分发」，机会在「诊断与证明」</h2>
+      <p>方向定下来之后，我做的第一件事是把市面上做 GEO / AI 可见性的产品和服务扫了一遍：一共 16 家，国内外都有，大致分成代运营、平台型 SaaS、AI 内容工具和独立顾问四类。其中两款国内商业 SaaS 拆得最细（下面称 A、B）：一款以客户身份走完了从注册、诊断到内容生产、分发的完整流程，另一款用操作录屏逐项复盘。结论不太体面：这个赛道看起来新，工具层其实已经很卷。</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>参与者类型</th><th>它靠什么卖</th><th>强在哪</th><th>留给我的缝隙</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>传统 SEO 服务商转型</td><td>既有客户关系与已经存在的预算</td><td>客户现成、执行团队现成</td><td>方法论还停在关键词与排名，讲不清「AI 为什么引用」</td></tr>
+            <tr><td>AI 营销服务商 / 大厂方案</td><td>资源、案例与品牌背书</td><td>资金足，媒体与分发资源强</td><td>重心在大客户和出海，本地中小客户够不着</td></tr>
+            <tr><td>AI 内容工具</td><td>产能与效率</td><td>产品轻、上手快、获客快</td><td>只解决「写出来、发出去」，不回答「有没有被引用」</td></tr>
+            <tr><td>独立 GEO 顾问 / 工作室</td><td>个人经验与客情</td><td>灵活、报价灵活</td><td>交付不成体系，质量随人波动，不可复用</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>两款深拆的产品更具体一点：</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>拆解维度</th><th>A：平台型</th><th>B：工具 + 人力</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>产品结构</td><td>数据看板、内容生成、媒体发布、建站与客服都想占，一条链全吃</td><td>主产品较轻，靠人补执行，更接近「工具 + 代运营」</td></tr>
+            <tr><td>评估体系</td><td>引用追踪、竞品对比、情感指数做成看板，客户想看的指标基本都有</td><td>指标少，解释靠人工</td></tr>
+            <tr><td>内容生产</td><td>批量生成路径，成稿的 AI 味重，行业细节靠模板</td><td>同样偏批量，换一个行业就露馅</td></tr>
+            <tr><td>分发能力</td><td>绑定媒体与账号资源，「写—审—发—收录」链路完整，这是真壁垒</td><td>更依赖外部渠道，分发不是自有能力</td></tr>
+            <tr><td>我作为客户的体感</td><td>看得见东西，但看不到「下一步改什么」</td><td>像买了一份外包服务，产品本身没留下判断</td></tr>
+            <tr><td>我要不要学</td><td>学「先证明、再卖服务」的顺序，不学重发布轻诊断</td><td>不学它的交付形态，那正是我要避开的路径</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>深拆里最值钱的不是功能清单，而是分清哪些能迁移、哪些不能。16 家里有一类面向出海品牌的整合营销系统，公开资料里方法论讲得最完整：把信源按 AI 信任权重分层、效果按层归因、自然推荐位与付费位置分开计量——这些框架我借来了；但配套战术是社区信源、付费货架、账号矩阵，依赖的是另一套信源生态和更大的人力预算，国内没有等效物，照搬就是给自己挖坑。</p>
+
+      <div class="callout">
+        <span class="label">竞争结论</span>
+        <p>工具层已经卷在「生成与分发」：比谁写得快、发得多、媒体资源全。但客户真正会问的是三句话——「我现在差在哪」「AI 凭什么引用我」「改完有没有用」。这三句对应的能力是<strong>可量化诊断、可证明被引用、行业 know-how</strong>，恰好是批量生成路线最不愿意碰的：慢，而且必须一个行业一个行业去磨。所以我没做「又一个内容工具」，而是选了「诊断驱动的闭环」。</p>
+      </div>
+
+      <p>这些结论是 2026 年年中的快照。这个赛道变得很快，今天的格局未必还是这样；但「工具层卷生成与分发、诊断与证明稀缺」这个判断，我认为短期内不会变。</p>
+
+      <h2>我怎么定义这个产品</h2>
+      <p>在写第一行 PRD 之前，我先把它拆成四段，并明确每一段「交付什么、怎么算有效」：</p>
+
+      <div class="diagram">
+        <p class="diagram-title">产品主链路 · 四段闭环</p>
+        <div class="flow-chain">
+          <div class="flow-step"><span class="idx">01 诊断</span><b>为什么没被提到</b><span>三层归因：信源 / 信任 / 采纳，输出 ≤5 张行动卡</span></div>
+          <div class="flow-step"><span class="idx">02 策略</span><b>该写什么、怎么写</b><span>从买家问法生成选题，确定内容类型、结构样式与证据要求</span></div>
+          <div class="flow-step"><span class="idx">03 内容</span><b>可被摘录的成稿</b><span>预检 → 受控 Agent 生成 → 编辑 → 同步到平台草稿箱</span></div>
+          <div class="flow-step"><span class="idx">04 实测</span><b>改完有没有用</b><span>真人探针按推荐/口碑/触达三类问法回测，留存原始回答与引用证据</span></div>
+        </div>
+      </div>
+
+      <h2>诊断：把「AI 为什么没提你」拆成三层</h2>
+      <p>市面上常见的做法是给一个 0–100 的「AI 可见度分数」，但分数解释不了原因，用户也不知道下一步做什么。我选择做<strong>可归因的三层诊断</strong>，每一层只判断「用户自己能改的供给侧」：</p>
+
+      <div class="diagram">
+        <p class="diagram-title">品牌诊断模型 · 三层归因</p>
+        <div class="layers">
+          <div class="layer"><b>信源</b><p>AI 有没有「读到」你：官网是否可达、robots 是否放行 AI 爬虫、内容是否可被摘录、关键信息是否结构化。</p></div>
+          <div class="layer"><b>信任</b><p>AI 敢不敢用你：主体事实是否可核对（工商、资质、公开信息），是否存在互相矛盾的信息，内容是否容易被摘录。</p></div>
+          <div class="layer"><b>采纳</b><p>AI 会不会推荐你：在合格实测中，品牌是否被提及、被推荐、被挂上自有信源；同题下竞品的出现频次与位置。</p></div>
+        </div>
+      </div>
+
+      <p>几个刻意的设计约束：</p>
+      <ul>
+        <li><strong>不造黑盒总分</strong>：诊断输出是三层客观结论 + 最多 5 张优先行动卡，回答「先改哪一项」。</li>
+        <li><strong>诊断不重复采集</strong>：不另建一套 AI 提问，而是基于已有合格实测的数据做归因，避免同一件事测两遍。</li>
+        <li><strong>「没测到」不等于「通过」</strong>：没有证据的项标为未评估，不制造虚假通过；小样本比率在 UI 上必须带 n。</li>
+      </ul>
+
+      <h2>内容生产：把 Agent 当受控工作流，而不是「放手让它写」</h2>
+      <p>内容生产是这类产品最容易做「虚」的地方：接一个大模型、堆一个 Prompt，就能生成看起来不错的文章，但一致性、成本、可复现性都不可控。我的做法是把生成链路拆成<strong>预检</strong>与<strong>生成</strong>两条后台任务流水线，用状态机管理，并给每一步定预算：</p>
+
+      <div class="diagram">
+        <p class="diagram-title">内容生产 · 两条受控流水线（数字为任务上限，不是实测平均）</p>
+        <div class="flow-chain">
+          <div class="flow-step"><span class="idx">预检 01</span><b>触发与规则校验</b><span>选题条件、硬门禁、用户品牌资料装载</span></div>
+          <div class="flow-step"><span class="idx">预检 02</span><b>混合召回</b><span>关键词 + 向量两路召回，RRF 融合，只把候选证据交给模型</span></div>
+          <div class="flow-step"><span class="idx">预检 03</span><b>证据筛选与作答</b><span>模型只从候选里选片，不允许编造；墙钟上限 240 秒、模型预算 2 次</span></div>
+          <div class="flow-step"><span class="idx">预检 04</span><b>结构化报告</b><span>输出冲突提示、推荐配方与补充信息骨架</span></div>
+          <div class="flow-step"><span class="idx">生成 01</span><b>规划</b><span>按内容类型、问法、结构样式与篇幅生成写作计划</span></div>
+          <div class="flow-step"><span class="idx">生成 02</span><b>成稿与质量复查</b><span>生成正文后做质量门禁与修补，不合格打回重试</span></div>
+          <div class="flow-step"><span class="idx">生成 03</span><b>配图与保存</b><span>按需配图、保存草稿；任务墙钟上限 390 秒、共享模型调用上限 8 次</span></div>
+          <div class="flow-step"><span class="idx">生成 04</span><b>人工在环</b><span>可取消、改稿、重跑；全程留痕，支持复现与成本核算</span></div>
+        </div>
+      </div>
+
+      <figure class="figure">
+        <div class="figure-scroll">
+          <img src="/assets/img/geo-agent-flow.webp" alt="源引 GEO 文章预检与生成 Agent 的最终流程与交互图：预检、生成、编辑与同步三阶段，以及模型调用预算、时间预算与状态机" width="2600" height="1585" loading="lazy">
+        </div>
+        <figcaption>预检与生成 Agent 的完整流程与交互边界（原图为白板文档，已裁去个人信息）。图里的秒数与调用次数是<strong>任务预算/上限</strong>，不是实测平均耗时。</figcaption>
+      </figure>
+
+      <p>这套设计背后是一条明确的产品判断：<strong>在内容质量不可完全保证的阶段，产品的价值不是「让 AI 更自由」，而是让每一步可观测、可干预、可回滚。</strong>所以预检有硬门禁，生成有质量复查，同步前还有 readiness 检查——宁可少生成一篇，也不要产出一篇通不过校验的稿子。</p>
+
+      <figure class="figure">
+        <img src="/assets/img/geo-workspace.webp" alt="源引 GEO 的文章工作台界面：左侧品牌资料与文章管理，中间成稿编辑与预览，右侧同步到知乎、掘金、CSDN 等平台草稿箱" width="1024" height="513" loading="lazy">
+        <figcaption>文章工作台：从选题、成稿、编辑到多平台草稿箱同步在同一页完成；同步只到草稿箱，是否发布由用户决定。（已裁去账号信息）</figcaption>
+      </figure>
+
+      <h2>回测：怎么证明「真的有用」</h2>
+      <p>GEO 最容易变成「自说自话」：文章发出去了，但没有证据说明 AI 有没有开始提这个品牌。所以回测不是交付时补的一份报告，而是产品的一部分——这套「真人探针」的做法很土：提问、读答案、打标、记录的人都得是真人，结论能回溯到每一次提问的原始截图。方法说穿了不高级，但正因为不高级，客户才愿意信。</p>
+
+      <h3>怎么问：五个入口、三类问法</h3>
+      <p>覆盖豆包、DeepSeek、通义千问、Kimi、腾讯元宝五个国内主流 AI 入口。不写脚本、不调接口，用真实账号按真实用户的方式逐题提问——各平台答案随机、也没有公开接口，人工复测是当时唯一可控的做法，能同时覆盖「入口差异」和「答案随机性」。问题集分三类，对应买家从知道到选择的不同阶段：</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>问法类型</th><th>问的是什么</th><th>示意</th><th>我在看什么</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>推荐型</td><td>某个场景里有哪些品牌值得选</td><td>「这类需求，有哪些品牌 / 服务商值得推荐」</td><td>有没有进入候选名单</td></tr>
+            <tr><td>口碑型</td><td>某个品牌靠不靠谱、别人怎么评价</td><td>「品牌名 + 怎么样、靠不靠谱」</td><td>被提到时是被肯定还是被质疑</td></tr>
+            <tr><td>触达型</td><td>知道之后怎么联系、怎么用</td><td>「品牌名 + 怎么联系、服务范围」</td><td>被推荐之后有没有承接入口</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>怎么记：五个字段，一个都不能省</h3>
+      <p>每次提问都按固定字段记录。这套字段决定了回测最后能不能用——少一项，数据就会退回「我觉得好像变好了」：</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>记录字段</th><th>记什么</th><th>为什么必须记</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>是否提及</td><td>这一次答案里有没有出现品牌</td><td>最基础的「在不在场」</td></tr>
+            <tr><td>位置</td><td>第几个被提到、有没有进推荐位</td><td>「被提到」和「被首推」差一个量级</td></tr>
+            <tr><td>引用来源</td><td>官网、百科、媒体、问答社区，还是无来源</td><td>判断自有内容资产到底有没有起作用</td></tr>
+            <tr><td>是否出现竞品</td><td>同一答案里出现了谁、出现几次</td><td>没有竞品做参照，就看不出相对位置</td></tr>
+            <tr><td>正负面</td><td>被推荐、被中性提及，还是被质疑 / 否定</td><td>关键词匹配到这里就失效了</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>另外每条记录都保留完整答案截图、平台、问法与提问时间——任何对外数字都要能说清「哪个平台、多少问题、什么时间、谁记录的」。</p>
+
+      <h3>怎么降低随机性：多轮、多时间点、带 n</h3>
+      <p>同一个问题今天问和三天后问，答案经常不一样；换个账号问，推荐结果也会变。所以每个平台、每类问题都要多轮提问，并在不同时间点复测，单次结果只算一次抽样。样本量小就老实写 n，比率指标一律带着 n 看趋势，不拿几十次提问去凑一个精确百分比。复测时坚持同问题集、同平台、同账号类型，发布后留出收录时间窗（周级）再测，并尽量拿未优化的竞品做参照，排除平台整体的波动。</p>
+
+      <h3>为什么人工打标，不用关键词匹配</h3>
+      <p>关键词匹配能统计品牌名出现了几次，但判断不了「这次到底是什么话」：品牌可能出现在推荐第一位，也可能出现在反向评价里（「这一类不太推荐」）；还有品牌名相近的干扰项，以及换一种问法后完全不同的答案结构。是不是推荐、是不是正面、是不是在跟竞品对比，只有人读完整段话才能判断。这也是我从一开始就要求人工记录字段的原因——回测的可信度不来自工具，来自记录方式。</p>
+
+      <h3>三个指标</h3>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>指标</th><th>怎么算</th><th>为什么用它</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>提及率</td><td>命中提问数 ÷ 总提问数</td><td>最直观的「在不在场」</td></tr>
+            <tr><td>推荐率</td><td>正面推荐数 ÷ 提问数（或提及数，口径须注明）</td><td>区分「被知道」和「被推荐」</td></tr>
+            <tr><td>自有信源引用率</td><td>引用自有信源次数 ÷ 引用总次数</td><td>判断内容资产是否真在起作用，也是 GEO 与「发稿刷量」的分水岭</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>指标必须按问法类型分层看：品牌词天然容易命中，会把行业词里的真问题盖住。结论也只给方向不给承诺——给变化区间和结构性判断（哪类问题开始被引用、引用的是不是自有信源），不给「保证上榜」。结果再反哺下一轮诊断，形成「诊断 → 内容 → 实测 → 再诊断」的循环。</p>
+      <p>这套方法也有硬边界：拿不到平台侧的曝光与点击，只能从「答案内容」侧推断；答案不完全可复现，只能多轮平均；咨询量的变化还受季节、投放、口碑多重影响，只做方向性归因。这些限制我会写在报告最前面，而不是藏在脚注里。</p>
+
+      <h2>关键取舍：我刻意不做什么</h2>
+      <div class="decisions">
+        <div class="decision"><b>不做「一键爆款」</b><p>产品形态是结构化长文 + 人工终发，而不是短文案批量生产器。目标不同，用户预期也必须不同。</p></div>
+        <div class="decision"><b>不承诺「必被 AI 引用」</b><p>生成式答案有随机性，承诺结果等于制造期望债。产品只承诺提高概率，并用实测数据说话。</p></div>
+        <div class="decision"><b>不做养号与自动终发</b><p>同步只到平台草稿箱，发布权留给用户。既降低账号风险，也避免平台侧的合规问题。</p></div>
+        <div class="decision"><b>不托管平台账号与 Cookie</b><p>通过浏览器扩展在本地完成同步，云端不保存用户各平台的账号凭证。</p></div>
+      </div>
+
+      <h2>定位转变：从「卖诊断报告」到「卖实测 + 方案」</h2>
+      <p>产品跑通之后，我先做了一件自认为很有诚意的事：给早期客户免费做完整诊断，出一份长报告——三层归因、五维打分、竞品对标、优化优先级，能写清楚的都写清楚了。结果很差：客户看完说「挺专业」「有道理」，然后就没有然后了。</p>
+      <p>复盘时我意识到问题不在报告的深度，而在交付物和客户的决策路径不匹配。老板要决定的不是「我的 AI 可见度打几分」，而是「我现在该干什么、要花多少精力、多久能看出变化」。报告回答了第一个问题，客户想问的是第二个。</p>
+      <p>后来我把交付形态改成：见面先花 15 分钟现场实测——用他真实的行业问法，在几个 AI 平台里当面提问，让他亲眼看到「搜品牌能搜到，搜行业词全是竞品」；测完不铺垫，直接给这一轮能动的几件事和预期。客户的反应从「哦，挺有意思」变成「那怎么办、多久能改」，到这一步才开始问价格。</p>
+
+      <div class="quote">
+        体检卖不动，处方卖得动。同一份实测数据，换个交付形态，客户的动作完全不同。
+        <cite>项目复盘 · 2026.10</cite>
+      </div>
+
+      <p>这条教训反过来改了产品：诊断的产物从「一份报告」改成「一次可现场演示的实测 + 一张按优先级排的行动清单（≤5 张行动卡）」，报告退到附件位置。后来「诊断是入口、不是产品」这个判断，就是从这里来的。</p>
+      <p>也要说清楚：这不是一个成功的商业化故事，项目最后还是阶段性中止了。但「交付物要匹配客户的决策路径」是这段经历里我最确定的一条产品结论——它比任何一个功能都更值得带走。</p>
+
+      <h2>结果与边界</h2>
+      <p>产品已上线免费内测，跑通了「注册 → 品牌资料 → 选题预检 → 生成 → 编辑 → 草稿箱同步 → 真人探针实测 → 诊断回看」的完整主路径，核心模块包括账号、品牌资料、选题预检、文章生成、编辑与媒体、多平台同步、品牌实测与诊断。2026.10 做小范围推广与邀请试用后，因效果与商业化未达预期，项目阶段性中止——沉淀下来的是 GEO 方法论与内容 Agent 工作流。</p>
+      <p>我也想把边界讲清楚，因为这比结果更能说明产品判断：</p>
+      <ul>
+        <li><strong>阶段</strong>：2026.10 已阶段性中止——小范围推广与邀请试用后，效果与商业化未达预期；没有对外承诺 SLA；</li>
+        <li><strong>样本</strong>：实测是小样本真人探针，比率指标必须带 n 看趋势，不能当作精确百分比对外引用；</li>
+        <li><strong>能力</strong>：内容生成质量依赖 Prompt 与素材，无法保证上榜；多平台同步受浏览器扩展与各平台审核影响，只保证到草稿箱；</li>
+        <li><strong>主体</strong>：产品由我个人从 0 到 1 完成，产品定义、PRD、原型、前后端与部署都是我，因此我能对每一个细节负责；项目停止也不影响复盘的可信度。</li>
+      </ul>
+
+      <h2>如果重来，我会改什么</h2>
+      <ul>
+        <li><strong>更早做「最小可用回测」</strong>：先验证「诊断结论能不能指导内容、内容能不能带来可见性变化」，再补全工作台等体验层。</li>
+        <li><strong>更早砍掉非核心场景</strong>：多平台、多结构样式在早期是复杂度来源，应该先收敛到一个平台、一种结构，把质量打透。</li>
+        <li><strong>把边界写进产品第一屏</strong>：GEO 的预期管理比功能更重要，诚实说明「只到草稿箱、不保证上榜」反而更容易拿到真实反馈。</li>
+      </ul>
+
+      <h2>相关链接</h2>
+      <ul>
+        <li>产品站：<a href="https://yuanyingeo.com" target="_blank" rel="noopener">yuanyingeo.com</a>（免费内测，需邮箱注册）</li>
+        <li>公开仓库：<a href="https://github.com/zhaolijian/geo-showcase" target="_blank" rel="noopener">geo-showcase</a>（产品文档、架构说明与关键实现节选，持续整理中）</li>
+        <li>延伸阅读：<a href="/thinking/geo-ai-search.html">AI 搜索时代，品牌的可摘录性比曝光更重要</a>、<a href="/thinking/agent-workflow-boundaries.html">把 Agent 当受控工作流来设计</a></li>
+        <li>交叉验证：<a href="/research.html">行业研究</a>里记过一条——外部研究独立推荐了 GEO 方向，而我实际选择的也是 GEO；研究不替我做决定，但会让判断多一票。</li>
+      </ul>
+
+      <div class="case-footer-nav">
+        <a href="/#cases">← 返回作品列表</a>
+        <a class="next" href="/cases/yueji.html">下一个案例：阅记 · 把纸质书笔记变成知识结构 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">AI 产品经理 · 作品集</div>
+        <p>从服务端研发到 AI 产品，关注大模型能力如何变成可验证、可交付的产品闭环。<br>开放 AI 应用 / Agent 产品方向机会。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品案例</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/reading.html">读书笔记</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+          <li><a href="/#repos">开源仓库</a></li>
+          <li><a href="/#about">关于我</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 AI 产品经理作品集 · 本站内容为个人作品与思考，欢迎交流，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

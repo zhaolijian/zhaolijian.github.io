@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>0→1 的关键动作不是做出来，而是早点判断该不该继续｜作品集</title>
+<meta name="description" content="三款 AI C 端产品上线验证后止损的复盘：验证什么、看哪些信号、什么时候停。">
+<link rel="canonical" href="https://zhaolijian.github.io/thinking/zero-to-one-stop-loss.html">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="AI 产品经理作品集">
+<meta property="og:title" content="0→1 的关键动作不是做出来，而是早点判断该不该继续｜作品集">
+<meta property="og:description" content="三款 AI C 端产品上线验证后止损的复盘：验证什么、看哪些信号、什么时候停。">
+<meta property="og:url" content="https://zhaolijian.github.io/thinking/zero-to-one-stop-loss.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI 产品经理作品集",
+  "description": "AI 产品案例、产品思考与读书笔记：GEO 诊断与内容 Agent、阅记、B 端中台与 0→1 验证。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"],
+  "about": ["AI 应用产品", "Agent 工作流", "GEO（生成式引擎优化）", "B 端产品", "大模型应用落地"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 产品经理 <small>作品集</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/#cases">作品</a>
+      <a href="/thinking.html" aria-current="page">思考</a>
+      <a href="/reading.html">读书</a>
+      <a href="/research.html">研究</a>
+      <a href="/#repos">开源</a>
+      <a class="nav-cta" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="article">
+  <div class="wrap">
+    <div class="prose">
+      <p class="eyebrow">产品思考 · 0→1</p>
+      <h1>0→1 的关键动作不是做出来，而是早点判断该不该继续</h1>
+      <p class="article-meta">2026-09 · 约 1800 字</p>
+
+      <p>独立做产品的头一年，我做完了三款 AI 产品：阅记、AI 肤质检测推荐、AI 多人对话播客。它们都完成了 MVP 与小范围验证，然后被我主动停掉。</p>
+      <p>很多人听到「三款都停了」会觉得是失败。但对我来说，这一年最重要的产出恰恰不是产品，而是一套判断「该不该继续」的方法——<strong>在 0→1 阶段，停对比做对更难，也更有价值。</strong></p>
+
+      <h2>先定义「验证什么问题」</h2>
+      <p>大部分独立开发者的流程是：想点子 → 做 MVP → 找用户 → 看反馈。问题在于，「看反馈」这一步没有定义标准：用户说「挺有意思」算通过吗？装了不用算通过吗？</p>
+      <p>我后来把每个项目开工前的第一件事改成写一页纸的验证问题：</p>
+      <ul>
+        <li>这款产品的核心假设是什么（用户会在什么场景下、为什么用它）？</li>
+        <li>什么信号算「验证通过」（留存、付费意愿、主动推荐）？</li>
+        <li>多久之内拿不到这个信号就该停？</li>
+      </ul>
+      <p>没有这一页纸，后面的开发就很容易变成「用功能进度冒充验证进度」——看起来每天都很忙，但最关键的未知数一个都没减少。</p>
+
+      <h2>三款产品，三种止损原因</h2>
+      <h3>阅记：价值被平台能力抹平</h3>
+      <p>阅记是我投入最多的一款，也真的上线并完成了小范围内测。但复盘时我发现：Notion 已经能做 OCR 识别、智能整理与 AI 辅助，Manus 这类 Agent 产品可以把「识别 → 整理 → 导图」串起来，而笔记软件加 OCR 与思维导图并不难。<strong>我的差异化会被平台能力持续抹平，而用户的迁移成本又极低。</strong>继续做，只能把体验做得更好一点，但改变不了用户「没有理由换」的事实。</p>
+
+      <h3>AI 肤质检测推荐：信任成本与供给复杂度被低估</h3>
+      <p>这个方向的技术门槛在下降，但真正难的是两件事：用户是否愿意为「AI 检测」上传人脸并相信结果；以及推荐背后的 SKU 匹配与利益冲突怎么处理。这两件事都不是一个人能低成本解决的。MVP 验证后我判断：需求存在，但产品形态不成立。</p>
+
+      <h3>AI 多人对话播客：新鲜感不等于场景</h3>
+      <p>多角色 AI 对话生成播客，Demo 效果很好，但验证下来是「听一两次觉得新鲜，没有持续消费的理由」。生成成本不是瓶颈，<strong>内容质量与场景粘性</strong>才是。没有持续场景，就没有留存，也就没有商业模式。</p>
+
+      <h2>我的四条止损标准</h2>
+      <div class="decisions">
+        <div class="decision"><b>需求是否真实且高频</b><p>用户会不会在没有补贴、没有新鲜感加成的情况下持续使用？</p></div>
+        <div class="decision"><b>差异化是否可持续</b><p>如果大厂或成熟产品做同样的事，我的优势是什么？如果答案是「我也会用 AI」，那就不成立。</p></div>
+        <div class="decision"><b>成本结构是否成立</b><p>一人公司的时间与获客成本是硬约束。没有明确分发路径，产品做得再好也无法验证商业假设。</p></div>
+        <div class="decision"><b>我是否愿意做三年</b><p>这件事能不能让我持续投入？如果答案是否定的，早停比晚停好。</p></div>
+      </div>
+      <p>这四条不需要全部不成立才止损。只要有一到两条明确不成立，继续投入的期望值就是负的。</p>
+
+      <h2>为什么「坚持」在 0→1 阶段可能是陷阱</h2>
+      <p>创业文化里，「坚持」被过度美化。但在 0→1 阶段，坚持的前提是<strong>你在正确的方向上积累</strong>。如果方向错了，坚持只会让你积累更多沉没成本，并错过其他机会。</p>
+      <p>更隐蔽的问题是：做产品本身会带来强烈的即时反馈（功能做完了、界面好看了、用户说不错），这些反馈会让人误以为在前进。真正重要的反馈——留存、付费、推荐——往往要等很久才出现，而且经常是否定的。</p>
+
+      <h2>低成本验证的几个手段</h2>
+      <ul>
+        <li><strong>竞品调研</strong>：把市面上相关产品下载、试用、做对比表。如果别人已经解决了 80%，先想清楚你的 20% 是什么；</li>
+        <li><strong>可点击原型</strong>：在写代码前让目标用户走一遍核心流程，观察他们在哪里卡住；</li>
+        <li><strong>假门测试</strong>：用落地页或等待名单验证「有没有人愿意为这个价值留下联系方式」，成本远低于开发；</li>
+        <li><strong>预售/付费意向</strong>：愿意付钱是最强的信号，比「我觉得不错」可靠一个数量级。</li>
+      </ul>
+
+      <h2>止损之后留下了什么</h2>
+      <p>三款产品停掉之后，我反而更清楚自己要做什么：AI 应用与 B 端 AI 产品，做有明确验证方式、能和我的技术背景结合的方向。这个判断直接促成了后来「源引 GEO」的立项——它同样有不确定性，但至少验证问题、验证方式和止损标准，在开工前就写清楚了。</p>
+
+      <div class="article-note">
+        延伸阅读：<a href="/cases/yueji.html">阅记案例</a> · <a href="/cases/opc.html">AI 产品 0→1 实验</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">AI 产品经理 · 作品集</div>
+        <p>从服务端研发到 AI 产品，关注大模型能力如何变成可验证、可交付的产品闭环。<br>开放 AI 应用 / Agent 产品方向机会。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品案例</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/reading.html">读书笔记</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+          <li><a href="/#repos">开源仓库</a></li>
+          <li><a href="/#about">关于我</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 AI 产品经理作品集 · 本站内容为个人作品与思考，欢迎交流，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 产品经理作品集｜案例、产品思考与读书笔记</title>
+<meta name="description" content="AI 产品经理作品集：软件工程本硕，4.5 年研发与产品经验，独立完成 GEO、阅记等 AI 产品 0→1。作品案例、产品思考与读书笔记。">
+<link rel="canonical" href="https://zhaolijian.github.io/">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="AI 产品经理作品集">
+<meta property="og:title" content="AI 产品经理作品集｜案例、产品思考与读书笔记">
+<meta property="og:description" content="AI 产品经理作品集：软件工程本硕，4.5 年研发与产品经验，独立完成 GEO、阅记等 AI 产品 0→1。作品案例、产品思考与读书笔记。">
+<meta property="og:url" content="https://zhaolijian.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI 产品经理作品集",
+  "description": "AI 产品案例、产品思考与读书笔记：GEO 诊断与内容 Agent、阅记、B 端中台与 0→1 验证。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"],
+  "about": ["AI 应用产品", "Agent 工作流", "GEO（生成式引擎优化）", "B 端产品", "大模型应用落地"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 产品经理 <small>作品集</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+      <a href="/" aria-current="page">首页</a>
+      <a href="/#cases">作品</a>
+      <a href="/thinking.html">思考</a>
+      <a href="/reading.html">读书</a>
+      <a href="/research.html">研究</a>
+      <a href="/#repos">开源</a>
+      <a class="nav-cta" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">AI 产品经理 · 求职中</p>
+    <h1>把大模型能力，做成<em>可验证的产品闭环</em>。</h1>
+    <p class="lede">软件工程本硕，4.5 年经验，其中近 3 年在一线互联网公司与在线教育公司做服务端研发 / B 端产品；过去一年多独立完成 GEO 诊断与内容 Agent、阅记等 AI 产品的 0→1。我关心的不是「能不能做出来」，而是能不能把模糊的 AI 能力拆成<strong>可观测、可回测、能止损</strong>的产品链路。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#cases">看作品案例</a>
+      <a class="btn btn-ghost" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="hero-meta">
+      <span>4.5 年经验</span><span class="dot" aria-hidden="true"></span>
+      <span>软件工程本硕</span><span class="dot" aria-hidden="true"></span>
+      <span>求职方向：AI 应用 / Agent 产品</span>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><b>1 个</b><span>上线 AI 产品（源引 GEO，内测后阶段性中止）</span></div>
+      <div class="stat"><b>3 款</b><span>0→1 AI 产品验证（含 2 款理性止损）</span></div>
+      <div class="stat"><b>5+ 业务线</b><span>中台产品化落地，4 次大促零事故</span></div>
+      <div class="stat"><b>45 → 2 分钟</b><span>流控规则从改代码到秒级生效</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">作品案例</p>
+        <h2>四个案例：从旗舰产品，到快速验证</h2>
+      </div>
+      <a class="more" href="/thinking.html">看产品思考 →</a>
+    </div>
+    <p class="section-note">每个案例都尽量写清四件事：问题怎么定义、关键决策是什么、边界在哪、如何验证。案例里出现的数字，都注明口径是「目标 / 上限」还是「实测」。</p>
+    <div class="case-list">
+      <a class="case-card" href="/cases/geo.html">
+        <div class="case-num">01</div>
+        <div>
+          <h3>源引 GEO：让品牌出现在 AI 答案里</h3>
+          <p>面向中小企业的生成式引擎优化产品。先诊断品牌为什么没被 AI 提到，再用受控的 Agent 流水线生产「可被摘录」的内容，最后用真人探针在多个 AI 平台上回测可见性——把 GEO 从玄学变成可验证的闭环。</p>
+          <div class="case-tags">
+            <span class="tag">旗舰产品</span><span class="tag">产品 &amp; 全栈</span><span class="tag">AI Agent</span><span class="tag">GEO</span>
+          </div>
+        </div>
+        <div class="case-metric">
+          <b>诊断 → 内容 → 实测</b>
+          <span>4 段闭环 · 上线内测后阶段性中止</span>
+        </div>
+      </a>
+      <a class="case-card" href="/cases/yueji.html">
+        <div class="case-num">02</div>
+        <div>
+          <h3>阅记：把纸质书笔记变成可复习的知识结构</h3>
+          <p>独立完成调研、PRD、原型、前后端实现与上线：拍照 → OCR → AI 结构化整理 → 自动思维导图 → 知识库问答，解决「纸质书笔记记了但用不起来」的断点。</p>
+          <div class="case-tags">
+            <span class="tag">独立 0→1</span><span class="tag">多模态</span><span class="tag">uni-app + Go</span><span class="tag">已内测</span>
+          </div>
+        </div>
+        <div class="case-metric">
+          <b>全链路 0→1</b>
+          <span>调研 → 开发 → 上线 → 小范围内测</span>
+        </div>
+      </a>
+      <a class="case-card" href="/cases/platform.html">
+        <div class="case-num">03</div>
+        <div>
+          <h3>B 端产品与中台：让复杂系统变成业务方能用的产品</h3>
+          <p>在一线互联网公司企业协作产品与在线教育公司三大业务中台，承担从需求记录、评审排期、PRD、开发测试到业务验收的完整闭环：权限方案、薪酬自定义字段、动态配置 / 流控 / 消息队列。</p>
+          <div class="case-tags">
+            <span class="tag">B 端产品</span><span class="tag">技术 + 产品</span><span class="tag">平台化</span>
+          </div>
+        </div>
+        <div class="case-metric">
+          <b>5+ 业务线</b>
+          <span>4 次大促零事故 · 一次上线零回滚</span>
+        </div>
+      </a>
+      <a class="case-card" href="/cases/opc.html">
+        <div class="case-num">04</div>
+        <div>
+          <h3>AI 产品 0→1 实验：用最低成本验证，再决定是否继续</h3>
+          <p>AI 肤质检测、AI 多人对话播客等 3 款 C 端产品的 MVP 验证复盘：怎么定义验证问题、看哪些信号、什么时候该止损，以及据此收敛出的产品方向。</p>
+          <div class="case-tags">
+            <span class="tag">OPC 独立开发</span><span class="tag">快速验证</span><span class="tag">止损判断</span>
+          </div>
+        </div>
+        <div class="case-metric">
+          <b>3 款 MVP</b>
+          <span>MVP 后 100% 理性止损，聚焦 AI 应用</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="capabilities">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">能力结构</p>
+        <h2>产品判断力 × AI 工程可行性 × 落地速度</h2>
+      </div>
+    </div>
+    <div class="cap-grid">
+      <div class="cap">
+        <h3>产品定义</h3>
+        <ul>
+          <li>需求调研与拆解、用户痛点挖掘</li>
+          <li>PRD、原型、竞品分析</li>
+          <li>核心指标与验收口径设计</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h3>AI 应用</h3>
+        <ul>
+          <li>Agent 工作流：工具调用、状态机、人工在环、调用预算</li>
+          <li>RAG、结构化生成与多平台分发</li>
+          <li>Prompt 资产、质量门禁与效果评测</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h3>技术理解</h3>
+        <ul>
+          <li>Go / Java / Python / Next.js / Vue</li>
+          <li>MySQL / Redis / 消息队列 / Prisma / Supabase</li>
+          <li>能独立写 MVP，与研发同频评估可行性</li>
+        </ul>
+      </div>
+      <div class="cap">
+        <h3>0→1 交付</h3>
+        <ul>
+          <li>MVP 快速验证与数据回测</li>
+          <li>成本、边界与止损判断</li>
+          <li>跨团队推动：研发、算法、设计、业务</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="repos">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">开源仓库</p>
+        <h2>把方法与证据摊开在 GitHub 上</h2>
+      </div>
+      <a class="more" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub 主页 →</a>
+    </div>
+    <p class="section-note">案例页是给面试官看的摘要；仓库里是可被追问的细节——决策文档、评测口径、架构图与复盘。所有仓库都做过客户信息与密钥脱敏。</p>
+    <div class="repo-grid">
+      <a class="repo" href="https://github.com/zhaolijian/geo-showcase" target="_blank" rel="noopener">
+        <h3>geo-showcase</h3>
+        <p>源引 GEO 的产品设计档案：品牌诊断模型、内容 Agent 的两条受控流水线、评测口径与「刻意不做」的边界。</p>
+        <span class="meta">AI 产品 · GEO · Agent · 文档为主</span>
+      </a>
+      <a class="repo" href="https://github.com/zhaolijian/chinese-rose-showcase" target="_blank" rel="noopener">
+        <h3>chinese-rose-showcase</h3>
+        <p>阅记：纸质书笔记助手的 PRD、架构、设计系统与测试证据，以及一次「及时止损」的完整复盘。</p>
+        <span class="meta">0→1 · 多模态 · uni-app + Go</span>
+      </a>
+      <a class="repo" href="https://github.com/zhaolijian/ai-lab" target="_blank" rel="noopener">
+        <h3>ai-lab</h3>
+        <p>AI 应用方法论集：GEO 指标模型、内容 Agent 评测方法、OCR→知识库流水线、个人 AI 协作工作流。</p>
+        <span class="meta">方法论 · 评测 · 工作流</span>
+      </a>
+      <a class="repo" href="https://github.com/zhaolijian/yanpei-showcase" target="_blank" rel="noopener">
+        <h3>yanpei-showcase</h3>
+        <p>颜配：AI 肤质检测与推荐 App 的工程复盘——Flutter + Go 的技术选型、链路设计与过度设计反思。</p>
+        <span class="meta">工程复盘 · Flutter + Go</span>
+      </a>
+      <a class="repo" href="https://github.com/zhaolijian/industry-research" target="_blank" rel="noopener">
+        <h3>industry-research</h3>
+        <p>行业研究方法与结论集：AI+教育、浏览器格局、AI 硬件、脑机接口、小红书数据、出海与一人公司。</p>
+        <span class="meta">行业研究 · 数据口径 · 方法论</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="thinking">
+
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">产品思考</p>
+        <h2>写作，是把判断逼清楚的方式</h2>
+      </div>
+      <a class="more" href="/thinking.html">全部文章 →</a>
+    </div>
+    <div class="essay-list">
+      <a class="essay" href="/thinking/geo-ai-search.html">
+        <div class="date">2026-11</div>
+        <div>
+          <h3>AI 搜索时代，品牌的可摘录性比曝光更重要</h3>
+          <p>从 GEO 的定义出发，讲清楚为什么「被 AI 引用」是新的内容供给问题，而不是又一轮关键词优化。</p>
+        </div>
+      </a>
+      <a class="essay" href="/thinking/requirements-value-formula.html">
+        <div class="date">2026-11</div>
+        <div>
+          <h3>用户说「想要一个 XX」时，产品经理该怎么翻译成需求？</h3>
+          <p>用用户价值公式与听 / 拆 / 选 / 定四步，把表层诉求拆成可验收的产品需求。</p>
+        </div>
+      </a>
+      <a class="essay" href="/thinking/agent-workflow-boundaries.html">
+        <div class="date">2026-10</div>
+        <div>
+          <h3>把 Agent 当受控工作流来设计</h3>
+          <p>为什么我给生成链路上墙钟、调用预算、状态机与人工在环，而不是追求「全自主」。</p>
+        </div>
+      </a>
+      <a class="essay" href="/thinking/zero-to-one-stop-loss.html">
+        <div class="date">2026-09</div>
+        <div>
+          <h3>0→1 的关键动作不是做出来，而是早点判断该不该继续</h3>
+          <p>三款 AI C 端产品上线验证后止损的复盘：验证什么、看哪些信号、什么时候停。</p>
+        </div>
+      </a>
+      <a class="essay" href="/thinking/b2b-productization.html">
+        <div class="date">2026-07</div>
+        <div>
+          <h3>B 端产品化不是把功能做全，而是把边界说清</h3>
+          <p>从三大中台与权限方案里总结：B 端需求怎么拆、怎么定优先级、怎么让多端一致。</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">关于我</p>
+        <h2>技术出身，产品为业，习惯用证据说话</h2>
+      </div>
+    </div>
+    <div class="about">
+      <div class="about-body">
+        <p>我读完软件工程硕士后进入一家在线教育公司做后端与基础架构，后来在一线互联网公司做企业协作产品的 B 端服务端研发。这段经历让我对「一个需求从提出到上线到底要经过什么」有体感，也让我更愿意在需求早期就把可行性、成本和验收口径讲清楚。</p>
+        <p>2025 年起我开始独立做 AI 产品：从调研、PRD、原型到前后端实现和上线验证，全部自己走一遍。旗舰项目「源引 GEO」做的是 AI 搜索时代的品牌可见性——我把它拆成「诊断 → 策略 → 内容 → 实测回测」四段闭环，并在其中用受控 Agent 流水线解决内容生产的一致性、成本与可观测问题。项目上线内测后做过小范围推广，因效果与商业化未达预期，2026.10 阶段性中止。</p>
+        <p>现在我在寻找 AI 应用 / Agent 产品经理的机会。比起「做过很多功能」，我更愿意聊：这个问题为什么值得解、方案的边界在哪、怎么证明它真的有效。</p>
+
+      </div>
+      <aside class="facts" aria-label="关键事实">
+        <h3>关键事实</h3>
+        <dl>
+          <dt>现在</dt>
+          <dd>寻找 AI 产品岗位。上一段独立产品是源引 GEO（AI 搜索时代的品牌可见性），内测后阶段性中止，留下了 GEO 方法论与内容 Agent 工作流。</dd>
+          <dt>擅长</dt>
+          <dd>把模糊的 AI 能力拆成可观测、可回测的产品链路；能写 PRD，也能自己实现 MVP。</dd>
+          <dt>关注</dt>
+          <dd>Agent 工作流、GEO / AI 搜索、AI 教育、具身智能。</dd>
+          <dt>教育</dt>
+          <dd>软件工程硕士；软件工程本科。</dd>
+          <dt>工作方式</dt>
+          <dd>先定义问题与验收，再选工具；用数据回测而不是感觉做判断。</dd>
+        </dl>
+      </aside>
+    </div>
+
+    <ul class="xp-list">
+      <li><span class="when">2026.07 – 2026.10</span><span>源引 GEO · 独立产品 &amp; 全栈（诊断 / 内容 Agent / 实测回测）</span></li>
+      <li><span class="when">2025.05 – 至今</span><span>自主创业 · AI 产品独立探索（OPC）</span></li>
+      <li><span class="when">2025.05 – 2026.01</span><span>3 款 AI C 端产品 0→1：阅记 / AI 肤质检测 / AI 多人对话播客</span></li>
+      <li><span class="when">2024.08 – 2025.03</span><span>一线互联网公司 · 服务端开发工程师（企业协作产品 B 端核心功能）</span></li>
+      <li><span class="when">2022.07 – 2024.07</span><span>在线教育公司 · 后端 / 基础架构（动态配置、流控、消息队列中台，兼产品）</span></li>
+      <li><span class="when">2019 – 2022</span><span>软件工程 硕士</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap">
+    <p class="eyebrow">联系</p>
+    <h2>如果你在找能把 AI 做进产品的人</h2>
+    <p>我目前开放 AI 应用 / Agent 产品方向的机会，也欢迎交流 GEO、Agent 工作流与 AI 教育。联系方式见简历，或通过 GitHub 找到我。</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">AI 产品经理 · 作品集</div>
+        <p>从服务端研发到 AI 产品，关注大模型能力如何变成可验证、可交付的产品闭环。<br>开放 AI 应用 / Agent 产品方向机会。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品案例</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/reading.html">读书笔记</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+          <li><a href="/#repos">开源仓库</a></li>
+          <li><a href="/#about">关于我</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 AI 产品经理作品集 · 本站内容为个人作品与思考，欢迎交流，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>

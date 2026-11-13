@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>阅记｜作品集案例</title>
+<meta name="description" content="阅记：纸质书笔记整理助手。拍照 → OCR → AI 结构化 → 思维导图 → 知识库问答，覆盖调研、PRD、原型、前后端实现到小范围验证的完整 0→1。">
+<link rel="canonical" href="https://zhaolijian.github.io/cases/yueji.html">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="AI 产品经理作品集">
+<meta property="og:title" content="阅记｜作品集案例">
+<meta property="og:description" content="阅记：纸质书笔记整理助手。拍照 → OCR → AI 结构化 → 思维导图 → 知识库问答，覆盖调研、PRD、原型、前后端实现到小范围验证的完整 0→1。">
+<meta property="og:url" content="https://zhaolijian.github.io/cases/yueji.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "AI 产品经理作品集",
+  "description": "AI 产品案例、产品思考与读书笔记：GEO 诊断与内容 Agent、阅记、B 端中台与 0→1 验证。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"],
+  "about": ["AI 应用产品", "Agent 工作流", "GEO（生成式引擎优化）", "B 端产品", "大模型应用落地"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">AI 产品经理 <small>作品集</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+      <a href="/">首页</a>
+      <a href="/#cases" aria-current="page">作品</a>
+      <a href="/thinking.html">思考</a>
+      <a href="/reading.html">读书</a>
+      <a href="/research.html">研究</a>
+      <a href="/#repos">开源</a>
+      <a class="nav-cta" href="https://github.com/zhaolijian" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="case-hero">
+  <div class="wrap">
+    <div class="kicker">
+      <span>案例 02 · 独立 0→1</span>
+      <span>2025.08 – 2026 上半年</span>
+      <span>产品 &amp; 全栈</span>
+      <span>阅记</span>
+    </div>
+    <h1>阅记：把纸质书笔记变成可复习的知识结构</h1>
+    <p class="lede">一个纸质书笔记整理助手：拍照或框选书里的划线句，OCR 识别后按章节定位并做结构化整理，自动生成思维导图，再导出到常用笔记软件。它完成上线与小范围内测，最后被我主动停掉——但这次「及时止损」反而成了我产品判断力的一部分。</p>
+    <dl class="case-meta">
+      <div><dt>我的角色</dt><dd>独立完成：竞品调研、PRD、原型、前后端实现、测试与上线</dd></div>
+      <div><dt>形态</dt><dd>微信小程序（uni-app 跨端）+ Go 后端</dd></div>
+      <div><dt>关键能力</dt><dd>OCR、章节定位、金字塔结构化、思维导图生成、导出</dd></div>
+      <div><dt>结局</dt><dd>上线内测后主动止损（价值假设失效）</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="wrap">
+    <div class="prose">
+
+      <h2>问题：纸质书的笔记，记得下但用不起来</h2>
+      <p>读纸质书的人常有两种笔记：划线（捕捉重点）和摘抄（二次加工）。但这两步之后往往没有第三步——笔记散落在纸上或相册里，没有结构、不能检索、复习时也找不到上下文。对学习者来说，真正缺的不是「记录工具」，而是<strong>把划线句变成可复习的知识结构</strong>的那一步。</p>
+      <p>我把问题拆成三个具体断点：</p>
+      <ul>
+        <li><strong>录入成本高</strong>：手抄划线句太慢，拍照后逐条整理更麻烦；</li>
+        <li><strong>结构缺失</strong>：划线句是碎片，不知道属于哪一章、在书里的什么位置，复习时失去线索；</li>
+        <li><strong>无法迁移</strong>：整理好的笔记留在某个 App 里，无法进入用户已有的笔记体系。</li>
+      </ul>
+
+      <h2>竞品调研：先确认「用户现在怎么解决」</h2>
+      <p>在写 PRD 之前，我先做了一轮横向调研：把市面上 40+ 款笔记、书摘、阅读类产品下载下来，按用户定位、与阅记的功能重复点、可借鉴点、商业化模式、留存设计与技术壁垒做成对比表，并逐个试用。</p>
+      <p>调研得到的三个关键结论：</p>
+      <ul>
+        <li><strong>专做纸质书摘的产品存在，但只解决「收集」</strong>：OCR 框选识别后就结束，不负责按章节整理，更不生成思维导图；</li>
+        <li><strong>通用笔记软件能覆盖大部分能力，但缺「纸质书」这一步</strong>：它们擅长编辑与同步，不擅长从书页照片里恢复结构化上下文；</li>
+        <li><strong>用户的迁移成本被低估</strong>：用户已经有印象笔记 / 飞书 / Notion，产品必须能导出过去，否则只是又一个孤岛。</li>
+      </ul>
+
+      <h2>MVP 的取舍：只做四个核心功能</h2>
+      <p>原始需求列表有 30 多条，我把它收敛到 4 个核心功能，其余全部列为「后续」：</p>
+      <div class="flow-chain">
+        <div class="flow-step"><span class="idx">01</span><b>书籍与笔记管理</b><span>按书分类；支持手动输入、ISBN、扫条形码导入书籍</span></div>
+        <div class="flow-step"><span class="idx">02</span><b>拍照识别与整理</b><span>识别划线句与框选句，按章节顺序定位并结构化</span></div>
+        <div class="flow-step"><span class="idx">03</span><b>阅读与编辑</b><span>阅读 / 编辑双模式，支持一键格式化与导出</span></div>
+        <div class="flow-step"><span class="idx">04</span><b>思维导图</b><span>基于整理后的笔记生成章节思维导图</span></div>
+      </div>
+
+      <h2>几个真正花心思的产品设计</h2>
+      <p>这个产品看起来是「OCR + 整理」，但难点都在细节规则里。我举三个例子：</p>
+
+      <h3>1. 划线句不是连贯句子怎么办</h3>
+      <p>用户划线的句子经常是半句、或者跳过中间内容，直接提取会得到语义断裂的碎片。我的处理规则是：在不改变原意的前提下，参考前后划线句或划线句周边的内容，把碎片整理成逻辑通顺的句子，并去掉「我 / 你」这类个人指向性表述。整理时按「结论先行、以上统下、归类分组、逻辑递进」的金字塔原则，只保留一层结构，避免把笔记变成小作文。</p>
+
+      <h3>2. 怎么知道这句话在书里的位置</h3>
+      <p>我用三重信息做章节定位：书籍目录（章节标题）、拍照页边角的当前章信息、以及页码。三者结合，才能把一句划线句放回正确的章节与顺序里，而不是简单按拍照顺序堆叠。</p>
+
+      <h3>3. 怎么让笔记进入用户已有的工具</h3>
+      <p>产品不试图成为用户的「唯一笔记软件」。MVP 支持导出 PDF / 文本 / Markdown，并规划了导入到印象笔记、飞书、Notion 等产品的路径——降低用户的迁移成本，才有机会被真正用起来。</p>
+
+      <figure class="figure">
+        <img src="/assets/img/yueji-book-detail.webp" alt="阅记小程序书籍详情页：书籍信息、思维导图生成入口、笔记列表与阅读模式切换" width="1170" height="1992" style="max-width:300px" loading="lazy">
+        <figcaption>阅记小程序「书籍详情」界面：按书聚合笔记，可一键生成整本书的思维导图。</figcaption>
+      </figure>
+
+      <h2>实现：一个人把前后端都写完</h2>
+      <p>为了验证效率，我选择自己实现全部链路：前端用 uni-app + Vue 3 + TypeScript，一套代码覆盖微信小程序与 H5；后端用 Go + Gin + GORM + MySQL，负责书籍、笔记、OCR 与 AI 整理；对象存储用云 COS，登录走微信授权与 JWT；OCR 接入微信 OCR 能力，文本合并与思维导图交给大模型处理。</p>
+      <p>工程上刻意做了几件事：用 MVVM + Pinia 管理状态、用 TDD 倒逼接口实现、把「简单需求 → PRD → 一页架构 → MVP 看板 → 分任务实现 → 真机验证」固化成流程。这段经历让我确认：<strong>一个人也能把产品做到上线，但「能上线」和「值得继续做」是两件完全不同的事。</strong></p>
+
+      <h2>结局：上线内测后，我选择了止损</h2>
+      <p>MVP 上线并完成小范围验证后，我复盘时发现价值假设正在失效：</p>
+      <ul>
+        <li>Notion 已经能做 OCR 识别、智能整理与 AI 辅助，且整理效果更好；</li>
+        <li>Manus 这类 Agent 产品可以把「识别 → 整理 → 导图」串起来；</li>
+        <li>笔记类产品要加 OCR 与思维导图并不难，AI 教练只需接入 LLM——<strong>我的差异化会被平台能力快速抹平</strong>。</li>
+      </ul>
+      <p>这意味着：即使我把体验做得更好，用户也没有理由从已有工具迁移过来。继续投入只会变成「坚持」，而不是「验证」。所以我停掉了这个项目，把精力转向我认为差异更明确、且与自身经历更匹配的方向——AI 搜索时代的品牌可见性（GEO）。</p>
+
+      <div class="callout">
+        <span class="label">复盘</span>
+        <p>这次止损让我形成了两个判断标准：第一，<strong>先确认「谁会为它改变现有习惯」</strong>，再决定要不要做；第二，<strong>平台能力会持续吞掉工具型产品的差异化</strong>，产品要么有数据/工作流壁垒，要么有垂直 know-how，否则很难长期成立。</p>
+      </div>
+
+      <h2>这段经历留下的东西</h2>
+      <ul>
+        <li>完整走通了一个产品从调研、PRD、架构、实现、上线到复盘的全过程；</li>
+        <li>具备了「把模糊需求翻译成技术方案」的能力，也能独立评估成本与风险；</li>
+        <li>更重要的是：知道什么时候该停。这比多做一个功能更值钱。</li>
+      </ul>
+
+      <h2>相关链接</h2>
+      <ul>
+        <li>公开仓库：<a href="https://github.com/zhaolijian/chinese-rose-showcase" target="_blank" rel="noopener">chinese-rose-showcase</a>（产品文档、架构说明与关键实现节选，整理中）</li>
+        <li>延伸阅读：<a href="/thinking/zero-to-one-stop-loss.html">0→1 的关键动作不是做出来，而是早点判断该不该继续</a></li>
+      </ul>
+
+      <div class="case-footer-nav">
+        <a href="/cases/geo.html">← 上一个案例：源引 GEO</a>
+        <a class="next" href="/cases/platform.html">下一个案例：B 端产品与中台 →</a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">AI 产品经理 · 作品集</div>
+        <p>从服务端研发到 AI 产品，关注大模型能力如何变成可验证、可交付的产品闭环。<br>开放 AI 应用 / Agent 产品方向机会。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品案例</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/reading.html">读书笔记</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+          <li><a href="/#repos">开源仓库</a></li>
+          <li><a href="/#about">关于我</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/thinking.html">产品思考</a></li>
+          <li><a href="/research.html">行业研究</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 AI 产品经理作品集 · 本站内容为个人作品与思考，欢迎交流，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
