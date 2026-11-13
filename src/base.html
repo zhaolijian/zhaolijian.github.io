@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<link rel="canonical" href="{{canonical}}">
+<meta name="theme-color" content="#fbf9f5">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="作品与记录">
+<meta property="og:title" content="{{og_title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/favicon.svg">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "作品与记录",
+  "description": "个人作品与记录：做过的产品、想清楚的问题、读过的书和做过的研究。",
+  "url": "https://zhaolijian.github.io/",
+  "sameAs": ["https://github.com/zhaolijian"]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到正文</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">作品与记录 <small>AI 产品</small></a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">菜单</button>
+    <nav class="nav" id="site-nav" aria-label="主导航">
+{{nav}}
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{{content}}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="brand">作品与记录</div>
+        <p>做过的产品、想清楚的问题、读过的书和做过的研究。<br>内容持续更新，欢迎交流与指正。</p>
+      </div>
+      <div>
+        <h3>站内</h3>
+        <ul>
+          <li><a href="/#cases">作品</a></li>
+          <li><a href="/thinking.html">思考</a></li>
+          <li><a href="/reading.html">读书</a></li>
+          <li><a href="/research.html">研究</a></li>
+          <li><a href="/#repos">开源</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>线上</h3>
+        <ul>
+          <li><a href="https://github.com/zhaolijian" rel="me noopener" target="_blank">GitHub</a></li>
+          <li><a href="/sitemap.xml">站点地图</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <span>© {{year}} 作品与记录 · 个人作品与思考，转载请注明出处。</span>
+      <span>静态站点 · GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
+</html>
