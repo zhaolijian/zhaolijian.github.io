@@ -58,6 +58,7 @@ STATIC_PAGES = [
     dict(out="cases/yueji.html", nav="cases", title="阅记案例", desc="阅记：把纸质书划线句变成可复习知识结构的笔记助手——拍照识别、结构化整理、思维导图与导出。"),
     dict(out="cases/platform.html", nav="cases", title="B 端产品与中台案例", desc="B 端产品与中台的产品化：权限与字段方案、动态配置 / 流控 / 消息队列中台的 Web 化改造。"),
     dict(out="cases/opc.html", nav="cases", title="AI 产品 0→1 实验案例", desc="三款 AI C 端产品的 MVP 实验：用最低成本验证，再决定是否继续。"),
+    dict(out="cases/robot-duck.html", nav="cases", title="机器鸭复刻实验", desc="机器鸭：零基础复刻一台 25cm 双足机器人——先在 MuJoCo 仿真里跑通 7 个官方策略与 600+ 次压力测试，再决定是否进入真机阶段。"),
 ]
 
 

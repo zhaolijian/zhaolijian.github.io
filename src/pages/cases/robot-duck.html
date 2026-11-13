@@ -1,0 +1,104 @@
+<section class="case-hero">
+  <div class="wrap">
+    <div class="kicker">
+      <span>案例 05 · 实验项目</span>
+      <span>2026.09 – 2026.10</span>
+      <span>仿真阶段 · 独立完成</span>
+    </div>
+    <h1>机器鸭：零基础复刻一台 25cm 双足机器人</h1>
+    <p class="lede">没有机器人背景，也没有先买硬件：先把 7 个官方策略放进 MuJoCo，用 600+ 次压力测试确认软件闭环，再决定要不要花约 4 千元进入真机阶段。</p>
+    <dl class="case-meta">
+      <div><dt>我的角色</dt><dd>路线调研 / 仿真环境 / 键盘桥接 / 摔倒恢复 / 测试体系</dd></div>
+      <div><dt>时间</dt><dd>2026.09 – 2026.10（阶段 0）</dd></div>
+      <div><dt>形态</dt><dd>25cm 双足、15 舵机的机器鸭，MuJoCo 仿真</dd></div>
+      <div><dt>状态</dt><dd>阶段 0 完成；阶段 1 真机未开始</dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="case-body">
+  <div class="wrap">
+    <div class="prose">
+
+      <figure class="figure" style="max-width:520px;margin-left:auto;margin-right:auto">
+        <img src="/assets/img/robot-duck-sim.webp" alt="MuJoCo 仿真环境中的 MicroDuck 机器鸭：25cm 双足、15 舵机，站在网格地面上" width="480" height="368" loading="lazy">
+        <figcaption>MuJoCo 仿真中的机器鸭（阶段 0）。3D 模型来自 Pollen Robotics 的开源项目，模型资产采用 CC BY-NC-SA 4.0 许可；本页仅作非商业展示。</figcaption>
+      </figure>
+
+      <h2>为什么先仿真，而不是先买硬件</h2>
+      <p>真机是比写代码大得多的工程：15 颗舵机要逐颗标定 ID 与零位，电池压降会影响输出，IMU 要烧固件并对基准，最后还要把整套控制跑成 50Hz 闭环。这些环节里任何一项出问题，都会把「软件到底行不行」这个判断掩盖掉。</p>
+      <p>所以这个项目先定了一条规则：<strong>阶段 0 只在仿真里验证，阶段 1 才买硬件。</strong>理由很实际——硬件预算约 4 千元（不含 3D 打印机），如果先买回来才发现策略跑不通、交互没闭环，钱和时间会一起浪费；而仿真阶段的硬件成本是零，需要算力时按次租卡，单次训练只要几元钱。</p>
+      <p>这也是整个项目里唯一像「产品判断」的地方：先把不确定性关进成本最低的验证环境，再决定要不要进入下一阶段。</p>
+
+      <h2>阶段 0 做了什么</h2>
+      <p>目标不是「造一只机器鸭」，而是让官方策略在一个可控环境里稳定跑起来，并且能被反复测试。具体做了四件事：</p>
+      <ul>
+        <li><strong>跑通官方策略</strong>：把 7 个 ONNX 策略（行走、站立、坐站、叼取、左右踢、前滚翻）接入 MuJoCo，确认 25cm 双足在仿真里能完成基本动作。</li>
+        <li><strong>补上键盘桥接</strong>：MuJoCo 的 viewer 不直接接收键盘事件，补了一层桥接，让终端和 3D 窗口都能控制，调试时不用在两个窗口之间来回切。</li>
+        <li><strong>加摔倒恢复</strong>：躯干倾斜超过 34° 并持续 0.5 秒，就切到站立策略；5 秒内没站起来就硬复位；恢复过程中拒绝坐姿命令，避免侧躺时卡死。</li>
+        <li><strong>建测试体系</strong>：把「发现一个修一个」改成固定回归——按键语义、模糊压力、粗糙地面、随机操作序列、PTY 键盘注入五套测试，每次改完先跑回归。</li>
+      </ul>
+
+      <h2>阶段 0 的实测数字</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>测试项</th><th>结果</th><th>说明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>官方策略跑通</td><td>7 / 7</td><td>行走、站立、坐站、叼取、踢、前滚翻</td></tr>
+            <tr><td>按键语义</td><td>54 / 54</td><td>方向、技能、头部与身姿模式的组合</td></tr>
+            <tr><td>模糊压力测试</td><td>602 次，恢复 100 / 100</td><td>随机姿态、随机指令，检查摔倒后能否恢复</td></tr>
+            <tr><td>粗糙地面</td><td>100 / 100</td><td>改变地面摩擦与起伏后的稳定性</td></tr>
+            <tr><td>随机操作序列</td><td>100 / 100</td><td>连续随机操作下的行为一致性</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="font-size:.86rem">以上均为阶段 0 的仿真实测，不代表真机结果；真机标定后需要重新验证。</p>
+
+      <h2>验证过的死路</h2>
+      <p>比「做成了什么」更值得记的是「哪些路走不通」。下面四条都是阶段 0 已经确认的边界：</p>
+      <div class="decisions">
+        <div class="decision"><b>本地训练 RL：不可行</b><p>仿真依赖的物理引擎在 macOS 上没有可用的训练后端，只能租 GPU，单次训练成本约几元——能接受，但不能把训练当日常调试手段。</p></div>
+        <div class="decision"><b>官方策略的侧移：不稳</b><p>把侧移当主操控时，50–75% 的情况会摔倒；最后把左右键改成转向，侧移只作为辅助。</p></div>
+        <div class="decision"><b>长按方向：会失稳</b><p>持续给方向命令超过 1.5 秒，策略跟不上；改成点按 0.3–0.5 秒，操作反而更可控。</p></div>
+        <div class="decision"><b>坐站切换：要换策略</b><p>坐姿直接切行走会前扑；站起时切到站立策略再走，才稳定。</p></div>
+      </div>
+      <p>这些不是「踩坑记录」，而是路线选择的边界：真机阶段如果遇到同类现象，先回到这几条，而不是重新试一遍。</p>
+
+      <h2>阶段门与成本</h2>
+      <p>阶段 0 的硬件成本为零；训练按次租卡，单次约 3 元。进入阶段 1 后，硬件预算约 4 千元，分两次采购：</p>
+      <ul>
+        <li><strong>1A 桌面调试版</strong>：舵机、主控、调试板与结构件，先验证真机站立与行走；</li>
+        <li><strong>1B 整机</strong>：HAT、IMU、电池与传感器，1A 通过后才进入整机集成。</li>
+      </ul>
+      <p>这样即使真机阶段失败，损失也被限制在 1A 的范围内，而不是一次性把整机预算押上去。</p>
+
+      <h2>边界与未做</h2>
+      <ul>
+        <li><strong>真机还没开始</strong>：舵机 ID 与零位标定、电池压降参数、IMU 基准、50Hz 闭环都还没做；</li>
+        <li><strong>官方策略参数没改</strong>：只改了交互、恢复逻辑与测试，所以「能跑」不等于「调得好」；</li>
+        <li><strong>真机可能推翻部分结论</strong>：侧移、长按、坡道这些限制在真机上可能重排；</li>
+        <li><strong>这是复刻实验，不是产品</strong>：没有用户、没有商业化设计，价值在验证方法本身。</li>
+      </ul>
+
+      <div class="callout">
+        <span class="label">复盘</span>
+        <p>仿真能验证软件闭环，验证不了真机。阶段门的意义不是保证成功，而是让下一步的失败更便宜——先确认软件值不值得上真机，再决定花多少钱。</p>
+      </div>
+
+      <h2>相关链接</h2>
+      <ul>
+        <li>官方策略与仿真环境：<a href="https://github.com/pollen-robotics/microduck_rl" target="_blank" rel="noopener">pollen-robotics/microduck_rl</a>（Apache-2.0）</li>
+        <li>国产开源复刻路线：<a href="https://github.com/JoyandAI/OpenMicroDuck" target="_blank" rel="noopener">OpenMicroDuck</a>、<a href="https://github.com/kissqy/Microduck-kissqy" target="_blank" rel="noopener">Microduck-kissqy</a></li>
+        <li>同一条「先验证再投入」的思路：<a href="/cases/opc.html">AI 产品 0→1 实验</a> · <a href="/thinking/zero-to-one-stop-loss.html">0→1 的关键动作不是做出来，而是早点判断该不该继续</a></li>
+      </ul>
+      <p class="muted" style="font-size:.86rem">本页只描述复刻过程与自建测试，不包含上游代码、模型权重与 3D 模型文件。仿真渲染图中的 3D 模型版权归 Pollen Robotics 所有，按 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> 使用。</p>
+
+      <div class="case-footer-nav">
+        <a href="/cases/opc.html">← 上一个案例：AI 产品 0→1 实验</a>
+        <a class="next" href="/#cases">返回作品列表 →</a>
+      </div>
+    </div>
+  </div>
+</div>
