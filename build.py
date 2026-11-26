@@ -44,22 +44,21 @@ SITE_NAME = "作品与记录"
 YEAR = dt.date.today().year
 
 NAV = [
-    ("home", "/", "首页"),
-    ("cases", "/#cases", "作品"),
+    ("cases", "/", "作品"),
     ("thinking", "/thinking.html", "思考"),
     ("reading", "/reading.html", "读书"),
     ("research", "/research.html", "研究"),
     ("map", "/map.html", "地图"),
-    ("repos", "/#repos", "开源"),
+    ("repos", "/repos.html", "开源"),
 ]
 
 # 静态页面：只保留案例页；列表页由构建脚本生成
 STATIC_PAGES = [
     dict(out="cases/geo.html", nav="cases", title="源引 GEO 案例", desc="源引 GEO：面向中小企业的生成式引擎优化产品——品牌诊断、内容 Agent 与真人探针回测。"),
     dict(out="cases/yueji.html", nav="cases", title="阅记案例", desc="阅记：把纸质书划线句变成可复习知识结构的笔记助手——拍照识别、结构化整理、思维导图与导出。"),
-    dict(out="cases/platform.html", nav="cases", title="B 端产品与中台案例", desc="B 端产品与中台的产品化：权限与字段方案、动态配置 / 流控 / 消息队列中台的 Web 化改造。"),
     dict(out="cases/opc.html", nav="cases", title="AI 产品 0→1 实验案例", desc="三款 AI C 端产品的 MVP 实验：用最低成本验证，再决定是否继续。"),
     dict(out="cases/robot-duck.html", nav="cases", title="机器鸭复刻实验", desc="机器鸭：零基础复刻一台 25cm 双足机器人——先在 MuJoCo 仿真里跑通 7 个官方策略与 600+ 次压力测试，再决定是否进入真机阶段。"),
+    dict(out="repos.html", nav="repos", title="公开项目与文档", desc="公开的项目文档、代码和研究记录。"),
     dict(out="map.html", nav="map", title="主题地图", desc="把书、文章、研究、项目串成五条线：用户与需求、发现与验证、增长与商业、判断与决策、学习与长期主义。"),
 ]
 
@@ -478,19 +477,8 @@ def build() -> None:
 
     # ---- 首页 ----
     index_shell = (PAGES_DIR / "index.html").read_text(encoding="utf-8")
-    thinking_preview = "\n      ".join(essay_html(e) for e in essays[:5])
-    research_preview = "\n      ".join(card_html(dict(c, related=card_related.get(c.get("title", ""), ""))) for c in cards[:4])
-    deep_books = [b for g in groups for b in g["books"] if b.get("note")]
-    selected_books = (deep_books[:3] or [b for g in groups for b in g["books"]][:3])
-    books_preview = "\n      ".join(book_html(b) for b in selected_books)
-    write_page("index.html", "home",
-               f"{SITE_NAME}｜作品、思考、读书与研究",
-               "个人作品与记录：做过的产品、想清楚的问题、读过的书和做过的研究。",
-               fill(index_shell, {
-                   "THINKING_PREVIEW": thinking_preview,
-                   "RESEARCH_PREVIEW": research_preview,
-                   "READING_PREVIEW": books_preview,
-               }))
+    write_page("index.html", "cases", f"{SITE_NAME}｜作品、思考、读书与研究",
+               "记录做过的项目、读过的书、研究过的问题，以及实践中的思考。", index_shell)
 
     # ---- 404 ----
     four = """<section class="section"><div class="wrap" style="padding-top:40px">
