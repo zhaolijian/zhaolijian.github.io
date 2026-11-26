@@ -49,14 +49,14 @@ NAV = [
     ("reading", "/reading.html", "读书"),
     ("research", "/research.html", "研究"),
     ("map", "/map.html", "地图"),
-    ("repos", "/repos.html", "开源"),
+    ("repos", "/repos.html", "资料"),
 ]
 
 # 静态页面：只保留案例页；列表页由构建脚本生成
 STATIC_PAGES = [
     dict(out="cases/geo.html", nav="cases", title="源引 GEO 案例", desc="源引 GEO：面向中小企业的生成式引擎优化产品——品牌诊断、内容 Agent 与真人探针回测。"),
     dict(out="cases/yueji.html", nav="cases", title="阅记案例", desc="阅记：把纸质书划线句变成可复习知识结构的笔记助手——拍照识别、结构化整理、思维导图与导出。"),
-    dict(out="cases/opc.html", nav="cases", title="AI 产品 0→1 实验案例", desc="三款 AI C 端产品的 MVP 实验：用最低成本验证，再决定是否继续。"),
+    dict(out="cases/opc.html", nav="cases", title="AI 产品原型与复盘", desc="阅记、颜配与多人对话播客的探索过程和复盘。"),
     dict(out="cases/robot-duck.html", nav="cases", title="机器鸭复刻实验", desc="机器鸭：零基础复刻一台 25cm 双足机器人——先在 MuJoCo 仿真里跑通 7 个官方策略与 600+ 次压力测试，再决定是否进入真机阶段。"),
     dict(out="repos.html", nav="repos", title="公开项目与文档", desc="公开的项目文档、代码和研究记录。"),
     dict(out="map.html", nav="map", title="主题地图", desc="把书、文章、研究、项目串成五条线：用户与需求、发现与验证、增长与商业、判断与决策、学习与长期主义。"),
@@ -433,7 +433,7 @@ def build() -> None:
     # ---- 列表页 ----
     thinking_shell = (PAGES_DIR / "thinking.html").read_text(encoding="utf-8")
     write_page("thinking.html", "thinking", f"产品思考｜{SITE_NAME}",
-               "关于 AI 产品、GEO、Agent 工作流、需求判断、0→1 验证与 B 端产品化的思考。",
+               "用户需求、产品验证、AI 应用与工程实践。",
                fill(thinking_shell, {"ESSAY_LIST": "\n      ".join(essay_html(e) for e in essays)}))
 
     research_shell = (PAGES_DIR / "research.html").read_text(encoding="utf-8")
@@ -450,7 +450,7 @@ def build() -> None:
         for i in longreads
     )
     write_page("research.html", "research", f"行业研究｜{SITE_NAME}",
-               "用研究支持判断，而不是用研究代替判断：主题卡片、调研长文与方法论。",
+               "行业趋势、竞品分析与专题研究，区分事实与判断。",
                fill(research_shell, {
                    "RESEARCH_CARDS": "\n      ".join(longread_entries),
                    "LONGREADS": longread_list,

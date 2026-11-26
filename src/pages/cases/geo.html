@@ -1,11 +1,11 @@
 <section class="case-hero"><div class="wrap">
-  <div class="kicker"><span>独立产品</span><span>2026.07 – 2026.11</span><span>曾开放试用</span></div>
+  <div class="kicker"><span>独立产品</span><span>2026.07 – 2026.11</span></div>
   <h1>源引 GEO：品牌在 AI 问答中的可见性优化</h1>
   <p class="lede">当用户向 AI 咨询购买建议时，品牌如何被发现、被推荐，并最终被联系到？源引 GEO 将这个问题拆为诊断、策略、执行、回测四个环节。</p>
-  <dl class="case-meta"><div><dt>目标用户</dt><dd>中小企业的市场与内容负责人</dd></div><div><dt>产品形态</dt><dd>Web 应用与浏览器扩展</dd></div><div><dt>参与范围</dt><dd>产品设计、开发与验证</dd></div><div><dt>资料版本</dt><dd>截至 2026 年 11 月 9 日</dd></div></dl>
+  <dl class="case-meta"><div><dt>目标用户</dt><dd>中小企业的市场与内容负责人</dd></div><div><dt>产品形态</dt><dd>Web 应用与浏览器扩展</dd></div><div><dt>参与范围</dt><dd>产品设计、开发与验证</dd></div><div><dt>产品记录</dt><dd>截至 2026 年 11 月 9 日</dd></div></dl>
 </div></section>
 <div class="case-body"><div class="wrap"><div class="prose">
-  <nav aria-label="项目目录"><p class="eyebrow">目录</p><ol><li><a href="#problem">产品问题与整体设计</a></li><li><a href="#diagnosis">诊断</a></li><li><a href="#strategy">策略</a></li><li><a href="#execution">执行：文章生成 Agent</a></li><li><a href="#measurement">回测：从咨询到触达</a></li><li><a href="#results">验证与复盘</a></li></ol></nav>
+  <nav aria-label="项目目录"><p class="eyebrow">目录</p><ol><li><a href="#problem">产品问题与整体设计</a></li><li><a href="#diagnosis">诊断</a></li><li><a href="#strategy">策略</a></li><li><a href="#execution">执行：文章生成 Agent</a></li><li><a href="#measurement">回测：从咨询到触达</a></li><li><a href="#results">验证与复盘</a></li><li><a href="#resources">相关资源</a></li></ol></nav>
   <h2 id="problem">产品问题与整体设计</h2>
   <p>用户在 AI 中询问「哪家服务商值得选」「这个品牌怎么样」「怎么联系」时，AI 的回答可能直接影响下一步决策。品牌面临的不是单一的曝光问题，而是能否进入候选、获得可信评价，并提供准确的触达信息。</p>
   <p>目标是让企业知道<strong>哪里存在缺口、应该先做什么、做完如何衡量</strong>，而不是单纯增加文章数量。</p>
@@ -29,7 +29,8 @@
   <ul><li>官网难以访问或联系信息不准确：优先核对和修正入口。</li><li>推荐场景缺少内容：将真实用户问法转化为选题。</li><li>资质或品牌事实无法核实：提示补充可靠证据，而不是生成未经验证的背书。</li></ul>
   <h2 id="execution">执行：文章生成 Agent</h2>
   <p>文章生成是执行环节的重要功能。起点不是品牌想宣传什么，而是潜在客户会问什么。文章首先应回答问题，提供可理解、可核对的依据和比较信息；不相关的品牌资料不能强行植入。</p>
-  <h3>两条协作流程</h3>
+  <h3>预检与生成：两个独立入口，共享资料准备</h3>
+  <p>预检：检查选题条件 → 检索和筛选资料 → 提示缺失信息。生成：准备资料 → 规划结构 → 生成正文 → 质量复查 → 配图与保存。用户可以跳过预检直接生成；已完成预检时，生成可复用准备结果。</p>
   <div class="table-wrap"><table><thead><tr><th>阶段</th><th>设计</th><th>用户价值</th></tr></thead><tbody>
   <tr><td>选题预检</td><td>校验条件、混合检索知识库、筛选相关资料，提示必要的补充信息。</td><td>生成前识别信息缺口；建议由用户决定是否采纳。</td></tr>
   <tr><td>准备与规划</td><td>复用已准备的资料，依据读者意图和对象类型决定文章结构。</td><td>避免重复取材，按场景选择表格、列表、步骤或段落。</td></tr>
@@ -37,7 +38,7 @@
   <tr><td>质量复查</td><td>一次编辑式复查，局部修改最多四处；只有核心依据不足时才进行有界补查。</td><td>降低整篇重写导致的事实漂移，控制成本与等待时间。</td></tr>
   <tr><td>配图与保存</td><td>匹配相关图片，无合适图片可跳过；保存后进入人工编辑。</td><td>失败可降级，用户保留最终内容决定权。</td></tr>
   </tbody></table></div>
-  <p>两个关键取舍：预检并不是生成的强制门槛；生成和复查设置时间、调用次数及重试上限，到达边界时停止或降级。自动复查完成不等于人工验收通过。</p>
+  <p>生成与复查设有时间、调用次数及重试上限；到达边界时停止或降级。自动复查完成不等于人工验收通过。</p>
   <p>内容编辑后可同步到支持的平台草稿箱，由用户审核并发布。同步成功不代表文章已发布，更不代表 AI 已收录。</p>
   <h2 id="measurement">回测：模拟用户从咨询到触达</h2>
   <p>从用户决策过程反推测量方法：以真实用户在豆包等 AI 工具中的提问为参照，将问题分为推荐、口碑和触达三类。实测记录回答及可获得的来源证据，而不是用模型推断品牌表现。</p>
@@ -51,7 +52,7 @@
   <h2 id="results">验证与复盘</h2>
   <p>核心流程已实现并曾开放免费试用。2026 年 11 月的新版文章 Agent 已部署，记录中有真实生成、保存及重开等流程验证。内容质量仍有未完全解决的改进项，也没有足够证据证明品牌推荐率或商业转化受优化影响。</p>
   <p>产品设计的重点是区分诊断指标和结果指标：以证据驱动策略，以人工确认控制对外发布，以可重复的测试观察结果。工程可用性、内容可交付性与商业价值需要分别验证。</p>
-  <h2>相关资源</h2>
+  <h2 id="resources">相关资源</h2>
   <ul><li><a href="https://github.com/zhaolijian/geo-showcase" target="_blank" rel="noopener">公开项目档案（部分内容为历史版本）</a></li><li><a href="/thinking/geo-north-star-metric.html">GEO 的指标设计</a></li><li><a href="/thinking/agent-workflow-boundaries.html">受控 Agent 工作流</a></li></ul>
   <div class="case-footer-nav"><a href="/">← 返回作品</a><a class="next" href="/cases/yueji.html">阅记 →</a></div>
 </div></div></div>
