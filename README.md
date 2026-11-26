@@ -11,11 +11,11 @@ site/
 ├─ src/
 │  ├─ base.html             页面骨架（head / 页头 / 页脚，含 {{title}} 等占位符）
 │  └─ pages/
-│     ├─ index.html         首页（含 <!--THINKING_PREVIEW--> 等占位符）
+│     ├─ index.html         作品首页
 │     ├─ thinking.html      思考列表外壳
 │     ├─ reading.html       读书列表外壳
 │     ├─ research.html      研究列表外壳
-│     ├─ cases/*.html       五个作品案例页（含一个实验项目）
+│     ├─ cases/*.html       四个作品案例页（含一个实验项目）
 │     └─ map.html           主题地图（人工策展的跨内容索引）
 ├─ content/                 ← 日常更新只改这里
 │  ├─ thinking/*.md         思考文章
@@ -48,7 +48,7 @@ links:
 ```
 
 4. 提交（Commit changes）。GitHub Actions 会自动构建并发布，约 1 分钟生效。
-   - 列表页、首页预览、sitemap 都会自动更新，不需要改别处。
+   - 列表页、sitemap 都会自动更新，不需要改别处。
 
 **研究长文**：放到 `content/research/`，front matter 用 `kind: longread` + `topic`，会自动生成带目录的长文页并列入研究页。
 **研究卡片**：`kind: card`，另填 `data`（数据口径）与 `judgment`（判断），可选 `related: 长文文件名` 链接到长文。

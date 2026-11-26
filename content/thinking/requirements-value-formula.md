@@ -76,5 +76,5 @@ format: html
       <p>第四，用户价值为正不等于值得做。商业价值为负、或者你根本触达不到用户，需求成立也做不成产品。</p>
 
       <div class="article-note">
-        延伸阅读：<a href="/cases/yueji.html">阅记案例</a> · <a href="/cases/platform.html">B 端产品与中台案例</a> · <a href="/thinking/competitor-research-differentiation.html">40+ 款竞品调研后，我关掉了自己的项目</a>
+        延伸阅读：<a href="/cases/yueji.html">阅记案例</a> · <a href="/thinking/competitor-research-differentiation.html">40+ 款竞品调研后，我关掉了自己的项目</a>
       </div>
